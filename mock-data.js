@@ -1,4 +1,6 @@
-var data = [
+P('data');
+
+P.data = [
 	{
 		id: 1,
 		email: 'henry@chegg.com',
