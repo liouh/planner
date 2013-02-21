@@ -5,8 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/jgauge.css" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
+		
 		<style>
 			DIV.jgauge {float:none;zoom:0.7;margin-bottom:50px}
 			.career-analysis{float:right;border:1px solid #d5d5d5;border-radius:0 5px 5px 0;text-align:center;padding:10px 50px 20px}
@@ -14,11 +13,13 @@
 			.career-analysis H3{text-align:center;font:bold 12px "MuseoSlab-700",Sans-serif}
 			DIV#jGaugeMoney p.tick-label {font-size:22px}
 			DIV#jGaugeJoy p.tick-label {font-size:25px;letter-spacing:-7px}
-			/*DIV#jGaugeTime p.tick-label IMG{width:16px}*/
+			
 		</style>
 	</head>
 	<body>
-		<div class="planner-container">
+		<div class="container">
+			<h1>Planning Board</h1>
+			
 			<div class="career-analysis">
 				<h2>ANALYZER</h2>
 				<h3>Money (Moolah)</h3>
@@ -27,12 +28,19 @@
 				<div id="jGaugeTime" class="jgauge"></div>
 				<h3>Joy (Happiness)</h3>
 				<div id="jGaugeJoy" class="jgauge"></div>
+				
+				<a href="javascript:updateAnalyzer()">Update Analyzer</a> | <a href="javascript:updateAnalyzer(0)">Reset</a>
+
 			</div>
 			<div id="planner">
 				<div id="years"></div>
 				<ul id="tabs"></ul>
 				<ul id="sandbox" class="course-list"></ul>
 			</div>
+
+
+
+
 		</div>
 
 		<!-- Plan Modal start -->
@@ -59,87 +67,126 @@
 		<!-- Plan Modal End -->
 
 		<script src="js/init.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery-1.8.3.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
 		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
 		<script src="js/jQueryRotate.min.js"></script>
 		<script src="js/jgauge-0.3.0.a3.min.js"></script>
 
+
+
+
 		<script type="text/javascript">
-			var createNewGauge = function (id){
-				var myGauge = new jGauge();
-				myGauge.id = id;
-				myGauge.ticks.count = 3;
-				myGauge.label.xOffset = -2000;
-				return myGauge;
-			};
-			
-			var myMoneyGauge = createNewGauge('jGaugeMoney'); // Create a new jGauge.
-			var myTimeGauge = createNewGauge('jGaugeTime'); // Create a new jGauge.
-			var myJoyGauge = createNewGauge('jGaugeJoy'); // Create a new jGauge.
-		   
-			// var updateAnalyzers = new P.analyzer;
-			// P.analyzer.on('')
-		   
-			// This function is called by jQuery once the page has finished loading.
-			$(document).ready(function(){
-				myMoneyGauge.init(); // Put the jGauge on the page by initialising it.
-				myTimeGauge.init(); // Put the jGauge on the page by initialising it.
-				myJoyGauge.init(); // Put the jGauge on the page by initialising it.
-		      		      
-				var ticksArr = $('.tick-label');
-				ticksArr[0].innerText = '$';
-				ticksArr[1].innerText = '$$';
-				ticksArr[2].innerText = '$$$';
-				ticksArr[3].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/>";
-				ticksArr[3].style.top = "94px";
-				ticksArr[4].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
-				ticksArr[5].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
-				ticksArr[5].style.left = "110px";
-				ticksArr[5].style.top = "94px";
-				ticksArr[6].innerHTML = "&#9786;";
-				ticksArr[7].innerHTML = '&#9786;&#9786;';
-				ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
-				ticksArr[8].style.left = "98px";
-		      
-				myMoneyGauge.setValue(10);
-				myTimeGauge.setValue(10);
-				myJoyGauge.setValue(10);
-		      
-				myMoneyGauge.setValue(0);
-				myTimeGauge.setValue(0);
-				myJoyGauge.setValue(0);
-		      
-				myMoneyGauge.setValue(5.5);
-				myTimeGauge.setValue(6);
-				myJoyGauge.setValue(8);
-
-
-			});
-		   
-			P('analyzer');
-
-			P.analyzer = function(){
-				function getModelData(){
-					return this.data;
-				}
-				
-				function setModelData(data){
-					this.data = data;
-				}
-				
-				return{
-					setData: function(data){
-						setModelData(data);
-					},
+		
+			P('Analyzer');
+			P.Analyzer = (function(){
+				P.Analyzer.data = [];
+	
+				// PRIVATE
+				function _init(){
+										
+					P('Analyzer.options');
+					P.Analyzer.options = {};
 					
-					getData: function(){
-						return getModelData();
-					}
+					P.Analyzer.data[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
+					P.Analyzer.data[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
+		   			P.Analyzer.data[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
+		   			
+		   			P.Analyzer.data[0].init(); // Put the jGauge on the page by initialising it.
+				      P.Analyzer.data[1].init(); // Put the jGauge on the page by initialising it.
+				      P.Analyzer.data[2].init(); // Put the jGauge on the page by initialising it.
+				      
+				      P.Analyzer.data[0].setValue(10);
+				      P.Analyzer.data[1].setValue(10);
+				      P.Analyzer.data[2].setValue(10);
+				      
+				      P.Analyzer.data[0].setValue(0);
+				      P.Analyzer.data[1].setValue(0);
+				      P.Analyzer.data[2].setValue(0);
+				      
+				      P.Analyzer.data[0].setValue(5.5);
+				      P.Analyzer.data[1].setValue(6);
+				      P.Analyzer.data[2].setValue(8);
+				      		      
+				      var ticksArr = $('.tick-label');
+				      ticksArr[0].innerText = '$';
+				      ticksArr[1].innerText = '$$';
+				      ticksArr[2].innerText = '$$$';
+				      ticksArr[3].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[3].style.top = "94px";
+				      ticksArr[4].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[5].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[5].style.left = "110px";
+				      ticksArr[5].style.top = "94px";
+				      ticksArr[6].innerHTML = "&#9786;";
+				      ticksArr[7].innerHTML = '&#9786;&#9786;';
+				      ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
+				      ticksArr[8].style.left = "98px";
+				      
 				}
+				
+				//PUBLIC
+				function createNewGauge (id){					
+					var myGauge = new jGauge();
+					myGauge.id = id;
+					myGauge.ticks.count = 3;
+					myGauge.label.xOffset = -2000;
+					return myGauge;					
+				}
+			
+				function getModelData(){
+					return P.Analyzer.data;
+				}
+				function getSettings(){
+					return this.options;
+				}
+				function setModelData(k,v){
+					P.Analyzer.data[k].setValue(v);
+				}
+				function updateModelData() {
+					alert(P.Analyzer.data)
+				}
+				
+				_init();
+				
+				return {
+			       init: function (options) {
+			            $.extend(options);
+			        },
+			        debug: function () {
+			            return {
+			                settings: getSettings(),
+			                data: getModelData()
+			            };
+			        },
+			        setData: function (k, v) {
+			            setModelData(k,v);
+			        },
+			        getData: function (){
+			        	getModelData();
+			        },
+			        update: function (){
+			        	updateModelData();
+			        }
+				};
+				
+			}());
+			
+			
+		   //Update analyzer
+			function updateAnalyzer()
+			{
+				P.Analyzer.update();
 			}
-
+		   
+		   
+		   
+		   $(document).ready(function(){
+				P.Analyzer.init({});			   			   	
+		   			   	
+		   });
+		   
 		</script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/planner-view.js"></script>

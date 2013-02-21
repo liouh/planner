@@ -126,6 +126,17 @@
 	background: linear-gradient(top, #feb62c 0%,#f07d00 100%);
 	box-shadow: inset 0px 1px 0px #fc0, 0px 1px 2px rgba(0,0,0,0.25);
 	border: 1px solid #f07d00;
+	position: relative;
+}
+
+.course .delete {
+	font-size: 11px;
+	font-weight: normal;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 3px 5px;
+	cursor: pointer;
 }
 
 #sandbox {
