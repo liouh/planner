@@ -27,11 +27,11 @@ P.main.model = function(){
 	}
 	
 	function getKeyValue(key){
-		return this.data.key ? this.data.key : null;
+		return this.data[key] ? this.data[key] : null;
 	}
 	
 	function setModelData(key, value){
-		this.data.key = value;
+		this.data[key] = value;
 	}
 	
 	function getUserCachedData(){
