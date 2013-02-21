@@ -238,3 +238,28 @@
 	font-weight: bold;
 	text-align: center;
 }
+
+ul li{
+	list-style: none;
+}
+
+ul li span.add-major{
+	border: 2px dashed #DDD;
+	float: left;
+	margin-left: -16px;
+	padding: 6px;
+	width: 100px;
+	height: 15px;
+	line-height: 15px;
+	border-radius: 5px;
+	text-align: center;
+	position: relative;
+	top: 10px;
+	color: #999;
+	cursor: pointer;
+	background-color: #efefef;
+}
+span.add-sign{
+	font-size: 22px;
+	line-height: 9px;
+}
