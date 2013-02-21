@@ -2,8 +2,9 @@ P('main');
 P.main.view = function() {
 	
 	function isDebug() {
-		return false;
+		return true;
 	}
+
 	
 	function update() {
 	
@@ -65,6 +66,24 @@ P.main.view = function() {
 		});
 	}
 	
+    function lookup_course_color(subjectCode) {
+        var course_name = subjectCode.toLowerCase();
+
+        if (course_name.indexOf('cs') != -1) {
+            return 'c1';
+        } else if (course_name.indexOf('math') != -1) {
+            return 'c2';
+        } else if (course_name.indeOf('biol') != -1) {
+            return 'c3';
+        } else if (course_name.indeOf('chem') != -1) {
+            return 'c4';
+        } else if (course_name.indeOf('physics') != -1) {
+            return 'c5';
+        } else { 
+            return '';
+        }
+    }
+
 	return {
 		render: function() {
 			
@@ -109,7 +128,9 @@ P.main.view = function() {
 						for(var course in term.courses) {
 						
 							course = term.courses[course];
-							html += '<li class="course"><div class="delete">x</div><span>';
+                            var color_class = lookup_course_color(course.subjectCode);
+							html += '<li class="course ' + color_class +
+                                    '"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
 							html += '</span></li>';
 						}
@@ -148,15 +169,17 @@ P.main.view = function() {
 				
 				update();
 			});
-			
+		
 			$('.add-course').on('click', function(e) {
 				Chegg.Widget.survey({type: 'course'}, function(data) {
 					var target = $(e.currentTarget);
 					if(data && data.course) {
 						for(var course in data.course) {
 							course = data.course[course];
-							
-							var html = '<li class="course"><div class="delete">x</div><span>';
+
+                            var color_class = lookup_course_color(course.subjectCode);
+							var html = '<li class="course ' + color_class
+                                       + '"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
 							html += '</span></li>';
 							
