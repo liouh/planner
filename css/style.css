@@ -2,7 +2,7 @@
 	overflow: hidden;
 }
 
-#tabs {
+#tabs, #tab-add {
 	float: right;
 	width: 12%;
 	margin: 30px 0 0;
@@ -60,6 +60,7 @@
 #years {
 	float: right;
 	width: 87%;
+	min-height: 500px;
 	border: 1px solid #999;
 	border-radius: 5px 0 0 0;
 	box-shadow: 0 0 5px #ccc;
@@ -315,22 +316,13 @@
 	text-align: center;
 }
 
-ul li{
-	list-style: none;
-}
-
 ul li span.add-major{
 	border: 2px dashed #DDD;
-	float: left;
-	margin-left: -16px;
 	padding: 6px;
-	width: 100px;
 	height: 15px;
 	line-height: 15px;
 	border-radius: 5px;
 	text-align: center;
-	position: relative;
-	top: 10px;
 	color: #999;
 	cursor: pointer;
 	background-color: #efefef;
