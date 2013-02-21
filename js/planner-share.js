@@ -1,5 +1,25 @@
 P('main');
+
 P.main.view = function() {
+    function lookup_course_color(subjectCode) {
+        var course_name = subjectCode.toLowerCase();
+
+        if (course_name.indexOf('cs') != -1) {
+            return 'c1';
+        } else if (course_name.indexOf('math') != -1) {
+            return 'c2';
+        } else if (course_name.indexOf('biol') != -1) {
+            return 'c3';
+        } else if (course_name.indexOf('chem') != -1) {
+            return 'c4';
+        } else if (course_name.indexOf('physics') != -1) {
+            return 'c5';
+        } else { 
+            return '';
+        }
+    }
+
+
 	return{
 		render: function() {
 			
@@ -25,7 +45,8 @@ P.main.view = function() {
 					for(var course in term.courses) {
 					
 						course = term.courses[course];
-						html += '<li class="course"><span>';
+                        var color_class = lookup_course_color(course.subjectCode);
+						html += '<li class="course ' + color_class  + '"><span>';
 						html += course.subjectCode + ' ' + course.catalogNumber;
 						html += '</span></li>';
 					}
