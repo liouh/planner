@@ -1,7 +1,7 @@
 P('main');
 
 P.main.model = function(){
-	this.data = {};
+	P.main.data = {};
 	
 	// PRIVATE
 	function _init(){
@@ -27,11 +27,11 @@ P.main.model = function(){
 	}
 	
 	function getKeyValue(key){
-		return this.data[key] ? this.data[key] : null;
+		return P.main.data[key] ? P.main.data[key] : null;
 	}
 	
 	function setModelData(key, value){
-		this.data[key] = value;
+		P.main.data[key] = value;
 	}
 	
 	function getUserCachedData(){
@@ -72,17 +72,16 @@ P.main.model = function(){
 	}
 	
 	function createUser(){
-		var modelData = getModelData();
-
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
 			data: {
 				email: P.main.options.email, 
 				action: "user-create",
-				school: modelData.school.name,
-				classyear: modelData.classyear.year
+				school: P.main.data.school.name,
+				classyear: P.main.data.classyear.year
 			},
+			dataType: 'jsonp',
 			success: function(r){
 				console.log('user created');
 			},

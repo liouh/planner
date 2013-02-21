@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Planner</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Planning Board</h1>
+			
+			<div id="planner">
+				<ul id="tabs"></ul>
+				<div id="years"></div>
+			</div>
+			
+		</div>
+		<script src="js/init.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+		<script src="js/planner-view.js"></script>
+		<script>
+		
+	//	var test_data = {"id":1,"email":"henry@chegg.com","name":"CS","years":[{"terms":[{"name":"Fall","courses":[{"subjectCode":"CS","catalogNumber":"106A"},{"subjectCode":"MATH","catalogNumber":"51"}]},{"name":"Spring","courses":[{"subjectCode":"CS","catalogNumber":"108"},{"subjectCode":"MATH","catalogNumber":"52"},{"subjectCode":"MATH","catalogNumber":"53"}]}]},{"terms":[{"name":"Fall","courses":[{"subjectCode":"CS","catalogNumber":"106A"},{"subjectCode":"MATH","catalogNumber":"51"}]},{"name":"Spring","courses":[{"subjectCode":"CS","catalogNumber":"108"},{"subjectCode":"MATH","catalogNumber":"52"},{"subjectCode":"MATH","catalogNumber":"53"}]}]}]};
+		
+		$.ajax({
+			type: "GET",
+			url: 'http://liouh.com/planner/data.php',
+			data: {
+				email: 'henry@chegg.com', 
+				action: "plan-get"
+			},
+			dataType: 'jsonp',
+			success: function(data){
+				P.mainView = new P.main.view();
+				P.data = data;
+				P.mainView.render();
+			}
+		});
+		
+		</script>
+	</body>
+</html>
