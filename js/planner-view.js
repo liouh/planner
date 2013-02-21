@@ -14,15 +14,6 @@ P.main.view = function() {
 		var plan = $('[data-plan=' + id + ']');
 		var data = {};
 		
-		var email = 'henry@chegg.com';
-		if(!isDebug()) {
-			email = P.main.options.email;
-		}
-		
-		data.id = id;
-		data.email = email;
-		data.name = name;
-		
 		data.years = [];
 		
 		plan.find('.year').each(function(i, el) {
