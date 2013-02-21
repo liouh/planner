@@ -12,10 +12,8 @@ P.main.model = function(){
 //		P.main.options.email = 'toutest1@chegg.com';
 //		P.main.options.target = "http://liouh.com/planner/data.php";
 //		_loadPreDefinedTemplates();
-//		_checkUserPlans();
 //		$('#planModal').modal('show');
 		//hack
-		
 		
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
