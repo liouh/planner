@@ -5,8 +5,8 @@ P.main.view = function() {
 			var data = P.main.planData;
 			var classyear = P.main.data.classyear.year;
 			
-//			var data = P.main.planData;
-//			var classyear = P.main.data.classyear.year;
+//			var data = P.data;
+//			var classyear = 2013;
 			
 			var first = true;
 			for(var plan in data) {

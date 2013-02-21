@@ -1,5 +1,4 @@
 #planner {
-	width: 100%;
 	overflow: hidden;
 }
 
@@ -57,7 +56,7 @@
 }
 
 #years {
-	float: left;
+	float: right;
 	width: 85%;
 	border: 1px solid #999;
 	border-radius: 5px 5px 0 0;
@@ -131,7 +130,7 @@
 }
 
 #sandbox {
-	float: left;
+	float: right;
 	height: 120px;
 	width: 85%;
 	padding: 0;
