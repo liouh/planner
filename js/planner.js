@@ -1,7 +1,7 @@
 P('main');
 
 P.main.model = function(){
-	this.data = {};
+	P.main.data = {};
 	
 	// PRIVATE
 	function _init(){
@@ -27,11 +27,11 @@ P.main.model = function(){
 	}
 	
 	function getKeyValue(key){
-		return this.data[key] ? this.data[key] : null;
+		return P.main.data[key] ? P.main.data[key] : null;
 	}
 	
 	function setModelData(key, value){
-		this.data[key] = value;
+		P.main.data[key] = value;
 	}
 	
 	function getUserCachedData(){
