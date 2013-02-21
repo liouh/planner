@@ -1,5 +1,4 @@
 P('main');
-P('callbacks');
 
 P.main.model = function(){
 	
@@ -86,21 +85,6 @@ P.main.model = function(){
 	}
 }
 
-P.main.view = function(){
-	return{
-		render: function(){
-			console.log(P.mainModel.getData());
-			// RENDER main widget now
-		},
-		
-		load: function(){
-			P('plannerModel');
-			P.mainModel = new P.main.model();
-			P.mainModel.setData(P.data);
-		}
-	}
-}
-
 // SCHOOL handler
 P('main.school');
 P.main.school.callbacks = {
@@ -137,9 +121,3 @@ P.main.classYear.callbacks = {
 		console.log('schoolyear widget failed: '+ JSON.stringify(data));
 	}
 }
-
-
-// INIT
-P('plannerView');
-P.mainView = new P.main.view();
-P.mainView.load();
