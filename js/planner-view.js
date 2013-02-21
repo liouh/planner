@@ -4,6 +4,7 @@ P.main.view = function() {
 	function isDebug() {
 		return false;
 	}
+
 	
 	function update() {
 	
@@ -61,6 +62,26 @@ P.main.view = function() {
 		});
 	}
 	
+    function lookup_course_color(course) {
+        var course_name = course.subjectCode.toLowerCase();
+
+        if (course_name.indexof('cs') != -1) {
+            return 'c1';
+        } else if (course_name.indeof('math') != -1) {
+            return 'c2';
+        } else if (course_name.indeof('biol') != -1) {
+            return 'c3';
+        } else if (course_name.indeof('frnch') != -1) {
+            return 'c4';
+        } else if (course_name.indeof('chem') != -1) {
+            return 'c5';
+        } else if (course_name.indeof('physics') != -1) {
+            return 'c6';
+        } else { 
+            return '';
+        }
+    }
+
 	return {
 		render: function() {
 			
@@ -105,7 +126,9 @@ P.main.view = function() {
 						for(var course in term.courses) {
 						
 							course = term.courses[course];
-							html += '<li class="course"><div class="delete">x</div><span>';
+                            var color_class = lookup_course_color(course.subjectCode);
+							html += '<li class="course ' + color_class +
+                                    '"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
 							html += '</span></li>';
 						}
@@ -144,15 +167,17 @@ P.main.view = function() {
 				
 				update();
 			});
-			
+		
 			$('.add-course').on('click', function(e) {
 				Chegg.Widget.survey({type: 'course'}, function(data) {
 					var target = $(e.currentTarget);
 					if(data && data.course) {
 						for(var course in data.course) {
 							course = data.course[course];
-							
-							var html = '<li class="course"><div class="delete">x</div><span>';
+
+                            var color_class = lookup_course_color(course.subjectCode);
+							var html = '<li class="course ' + color_class
+                                       + '"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
 							html += '</span></li>';
 							
