@@ -159,5 +159,61 @@ P.data = [
 				]
 			}
 		]
-	}
+	},
+	{
+		id: 3,
+		email: 'henry@chegg.com',
+		name: 'BME',
+		years: [
+			{
+				terms: [
+					{
+						name: 'Fall',
+						courses: [ COURSES[0], COURSES[2], COURSES[8], COURSES[6], COURSES[3] ]
+					},
+					{
+						name: 'Spring',
+						courses: [ COURSES[1], COURSES[6], COURSES[18], COURSES[7] ]
+					}
+				]
+			},
+			{
+				terms: [
+					{
+						name: 'Fall',
+						courses: [ COURSES[9], COURSES[11], COURSES[14], COURSES[16] ]
+					},
+					{
+						name: 'Spring',
+						courses: [ COURSES[20], COURSES[13], COURSES[12], COURSES[19] ]
+					}
+				]
+			},
+			{
+				terms: [
+					{
+						name: 'Fall',
+						courses: [ COURSES[18], COURSES[23], COURSES[25], COURSES[28] ]
+					},
+					{
+						name: 'Spring',
+						courses: [ COURSES[24], COURSES[26], COURSES[30], COURSES[31] ]
+					}
+				]
+			},
+			{
+				terms: [
+					{
+						name: 'Fall',
+						courses: [ COURSES[0], COURSES[2], COURSES[3], COURSES[6], COURSES[8] ]
+					},
+					{
+						name: 'Spring',
+						courses: [ COURSES[1], COURSES[6], COURSES[4], COURSES[7] ]
+					}
+				]
+			}
+		]
+	},
+
 ];
