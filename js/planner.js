@@ -6,8 +6,8 @@ P.main.model = function(){
 	// PRIVATE
 	function _init(){
 		P('main.options');
+
 		// INIT SDK
-		
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
 		// SET options
@@ -34,18 +34,18 @@ P.main.model = function(){
 			success: function(data){
 				if(data.length > 0){
 					// IS user already registered his email/school
-					console.log('no plans for user'+ P.main.options.email);
+					console.log('plans found for user '+ P.main.options.email);
 					P.main.planData = data;
 					getUserCachedData();
 				} else {
 					// SHOW plans modal
-					console.log('plans found for user'+ P.main.options.email);
+					console.log('no plans found for user '+ P.main.options.email, $('#planModal'));
 					$('#planModal').modal('show');
 				}
 			}
 		});
 	}
-	
+
 	function getModelData(){
 		return this.data;
 	}
@@ -83,8 +83,8 @@ P.main.model = function(){
 		if(data.school && data.classyear){
 			console.log('found from cache');
 			
-			P.mainModel.setData('school', data.school);
-			P.mainModel.setData('classyear', data.classyear);
+			setModelData('school', data.school);
+			setModelData('classyear', data.classyear);
 
 			// RENDER
 			P.mainView.render();
