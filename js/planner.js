@@ -9,28 +9,28 @@ P.main.model = function(){
 		// INIT SDK
 		
 		//hack
-		P.main.options.email = 'toutest1@chegg.com';
-		P.main.options.target = "http://liouh.com/planner/data.php";
-		_loadPreDefinedTemplates();
-		_checkUserPlans();
+//		P.main.options.email = 'toutest1@chegg.com';
+//		P.main.options.target = "http://liouh.com/planner/data.php";
+//		_loadPreDefinedTemplates();
+//		_checkUserPlans();
 //		$('#planModal').modal('show');
 		//hack
 		
 		
-//		_loadPreDefinedTemplates();
+		_loadPreDefinedTemplates();
 
-//		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
-//		
+		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
+		
 //		// SET options
-//		Chegg.Widget.survey({ type: 'user' }, function(data){
-//			console.log('userData: ', data);
-//			P.main.options.firstname = data.user.firstname;
-//			P.main.options.lastname = data.user.lastname;
-//			P.main.options.email = data.user.email;
-//			P.main.options.target = "http://liouh.com/planner/data.php";
-//
-//			_checkUserPlans();
-//		});
+		Chegg.Widget.survey({ type: 'user' }, function(data){
+			console.log('userData: ', data);
+			P.main.options.firstname = data.user.firstname;
+			P.main.options.lastname = data.user.lastname;
+			P.main.options.email = data.user.email;
+			P.main.options.target = "http://liouh.com/planner/data.php";
+
+			_checkUserPlans();
+		});
 	}
 	
 	function _loadPreDefinedTemplates(){
