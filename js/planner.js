@@ -66,6 +66,27 @@ P.main.model = function(){
 			Chegg.Widget.survey({type: 'school'}, P.main.school.callbacks.success, P.main.school.callbacks.error);
 		}
 	}
+	
+	function createUser(){
+		var modelData = getModelData();
+		
+		$.ajax({
+			type: "GET",
+			url: P.main.options.target,
+			data: {
+				email: P.main.options.email, 
+				action: "user-create",
+				school: modelData.school.school.name,
+				classyear: modelData.classyear.classyear.year
+			},
+			success: function(r){
+				console.log('user created');
+			},
+			error: function(e){
+				console.log('user failed to create');
+			}
+		});
+	}
 
 	_init();
 
@@ -81,6 +102,10 @@ P.main.model = function(){
 		
 		getUserData: function(){
 			getUserCachedData();
+		},
+		
+		saveUser: function(){
+			createUser();
 		}
 	}
 }
@@ -110,9 +135,10 @@ P.main.classYear.callbacks = {
 	success: function(data){
 		console.log('schoolyear widget success: '+ JSON.stringify(data));
 		var model = P.mainModel, view = P.mainView, newData = model.getData();
-		newData.classYear = data;
+		newData.classyear = data;
 		model.setData(newData);
 		
+		model.saveUser();
 		// RENDER
 		view.render();
 	},
