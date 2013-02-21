@@ -9,7 +9,7 @@
 
 		<style>
 			DIV.jgauge {float:none;zoom:0.7;margin-bottom:50px}
-			.career-analysis{float:left;margin:10px;border:1px solid #d5d5d5;border-radius:0 5px 5px 0;text-align:center;padding:10px 50px 20px}
+			.career-analysis{float:right;border:1px solid #d5d5d5;border-radius:0 5px 5px 0;text-align:center;padding:10px 50px 20px}
 			.career-analysis H2{color:#878787;font:bold 15px "MuseoSlab-700",Sans-serif}
 			.career-analysis H3{text-align:center;font:bold 12px "MuseoSlab-700",Sans-serif}
 			DIV#jGaugeMoney p.tick-label {font-size:22px}
@@ -18,9 +18,8 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
+		<div class="planner-container">
 			<h1>Planning Board</h1>
-
 			<div class="career-analysis">
 				<h2>ANALYZER</h2>
 				<h3>Money (Moolah)</h3>
@@ -29,6 +28,11 @@
 				<div id="jGaugeTime" class="jgauge"></div>
 				<h3>Joy (Happiness)</h3>
 				<div id="jGaugeJoy" class="jgauge"></div>
+			</div>
+			<div id="planner">
+				<ul id="tabs"></ul>
+				<div id="years"></div>
+				<ul id="sandbox" class="course-list"></ul>
 			</div>
 		</div>
 
@@ -56,8 +60,8 @@
 		<!-- Plan Modal End -->
 
 		<script src="js/init.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
 		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
 		<script src="js/jQueryRotate.min.js"></script>
