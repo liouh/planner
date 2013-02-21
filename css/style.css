@@ -1,0 +1,61 @@
+#planner {
+	width: 100%;
+	overflow: hidden;
+}
+
+#tabs {
+	float: left;
+	width: 10%;
+	margin: 10px 0 0;
+	padding: 0;
+}
+
+#tabs li {
+	list-style: none;
+	background-color: #efefef;
+	padding: 10px;
+}
+
+#years {
+	float: left;
+	width: 85%;
+	border: 1px solid #999;
+	border-radius: 5px;
+}
+
+.year {
+	float: left;
+	width: 25%;
+	box-shadow: inset -1px 0 0 #ccc;
+}
+
+.year-label {
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 0 15px;
+}
+
+.term {
+	float: left;
+	width: 49%;
+	height: 500px;
+	border-right: 1px dashed #ccc;
+}
+
+.term:last-child {
+	border-right: none;
+}
+
+.term-label {
+	text-align: center;
+	padding: 0 0 10px;
+}
+
+.course {
+	border: 1px solid #666;
+	background-color: #efefef;
+	text-align: center;
+	padding: 20px 0;
+	margin: 0 5% 6px;
+	border-radius: 5px;
+}
