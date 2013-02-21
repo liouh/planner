@@ -32,9 +32,6 @@
 		<script src="js/init.js"></script>
 		<script src="js/jquery-1.8.3.js"></script>
 		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
-		<script src="js/mock-data.js"></script>
-		<script src="js/planner.js"></script>
-		<script src="js/mock-data.js"></script>
 		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
 		<script src="js/jQueryRotate.min.js"></script>
 		<script src="js/jgauge-0.3.0.a3.min.js"></script>
@@ -111,6 +108,13 @@
 					}
 			}
 
+		</script>
+		<script src="js/planner-view.js"></script>
+		<script src="js/planner.js"></script>
+		<script>
+			// init page
+			P.mainView = new P.main.view();
+			P.mainView.load();
 		</script>
 	</body>
 </html>
