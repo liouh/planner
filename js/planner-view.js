@@ -88,6 +88,9 @@ P.main.view = function() {
 	return {
 		render: function() {
 			
+			$('#years').empty();
+			$('#tabs').empty();
+			
 			var data = P.data;
 			var classyear = 2015;
 			if(!isDebug()) {
@@ -150,7 +153,7 @@ P.main.view = function() {
 				$('#years').append(html);
 			}
 			
-			$('#share').on('click', function(e) {
+			$('#share').off('click').on('click', function(e) {
 				var id = $('.selected[data-for]').attr('data-for');
 				window.open('share.html?id=' + id + '&classyear=' + classyear);
 			});
@@ -165,7 +168,7 @@ P.main.view = function() {
 				$('[data-plan=' + id + ']').show();
 			});
 			
-			$('#planner').on('click', '.course .delete', function(e) {
+			$('.year').on('click', '.course .delete', function(e) {
 				var target = $(e.target);
 				target.parent().remove();
 				
@@ -193,7 +196,7 @@ P.main.view = function() {
 				});
 			});
 			
-			$('span.add-major').click(function(){
+			$('span.add-major').off('click').click(function(){
 				$('#planModal').modal('show');
 			});
 			
