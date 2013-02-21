@@ -78,6 +78,8 @@ P.main.view = function() {
 			});
 			
 			$('.course-list').sortable({ connectWith: '.course-list' });
+			
+			Chegg.Canvas.resize();
 		},
 		
 		load: function(){
