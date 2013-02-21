@@ -74,8 +74,8 @@ P.Analyzer = (function(){
 		
 					
 	      var data = P.main.planData;
-	      data = [{"id":"2","name":"Computer Science","email":"henry@chegg.com","data":"{\"id\":\"2\",\"email\":\"henry@chegg.com\",\"name\":\"Computer Science\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 22:39:06"},{"id":"1","name":"Economics","email":"henry@chegg.com","data":"{\"id\":\"1\",\"email\":\"henry@chegg.com\",\"name\":\"Economics\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106B\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 19:51:42"}]
-	      P.main.planData = data;
+	      // data = [{"id":"2","name":"Computer Science","email":"henry@chegg.com","data":"{\"id\":\"2\",\"email\":\"henry@chegg.com\",\"name\":\"Computer Science\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 22:39:06"},{"id":"1","name":"Economics","email":"henry@chegg.com","data":"{\"id\":\"1\",\"email\":\"henry@chegg.com\",\"name\":\"Economics\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106B\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 19:51:42"}]
+	      // P.main.planData = data;
 	      
 	      if(data) {
 	      	//var classyear = data.classyear.year;
@@ -87,7 +87,6 @@ P.Analyzer = (function(){
 			sid=2;
 			var msg="";//"selected tab:" + id +'\n';
 			var courseCount=0, majorCount=0;
-				// var first = true;
 				for(var plan in data) {
 					
 					plan = data[plan];
@@ -98,34 +97,24 @@ P.Analyzer = (function(){
 					
 					
 					msg += '\n>>plan:' + planData.id+'\n';
-					//console.log ('plan stuff:'+planData+'\n\n');
 										
 					if(planData.id == sid) {
 					
 						msg+=',sid:'+sid;
 					
-						//for(var year in planData.years) {
 						for(var y=0;y<planData.years.length;y++){						
-							// html += '<div class="year"><div class="year-label">' + (classyear - (planData.years.length - 1 - year)) + "</div>";
 							year = planData.years[y];
-							// console.log('\nyear stuff: ' + planData.years.length)
-							//msg+= 'year:' + (classyear - (planData.years.length - 1 - year));
 							msg+='year:'+(classyear - y)+'\n';
 							
 							for(var term in year.terms) {
 							
 								term = year.terms[term];
-								// html += '<div class="term"><div class="term-label">' + term.name + '</div>';
-								// html += '<ul class="course-list">';
 								msg += 'term: '+term.name;
 								courseCount=0;
 								
 								for(var course in term.courses) {
 								
 									course = term.courses[course];
-									// html += '<li class="course"><div class="delete">x</div><span>';
-									// html += course.subjectCode + ' ' + course.catalogNumber;
-									// html += '</span></li>';
 									courseCount++;
 									
 								}										
@@ -135,24 +124,17 @@ P.Analyzer = (function(){
 								if(courseCount>4) {
 									extremeFactor = 3;
 								}
-								// html += '</ul>';
-								// html += '<div class="add-course">+</div>';
-								// html += '</div>';
 							}
 							
-							// html += '</div>';
 						}
 					}
-					// html += '</div>';
-					
-					// $('#years').append(html);
 				}
 				
 				if(majorCount > 32) {
 					extremeFactor = 3
 				}
 				msg+='\nmajorCount = ' + majorCount;
-	      		console.log(msg);
+	      		// console.log(msg);
 	      	
 	      }
 	    	      
@@ -212,7 +194,7 @@ P.Analyzer = (function(){
 	
 	
    //Update analyzer
-function updateAnalyzer(flag)
+function updateAnalyzer()
 {
-	P.Analyzer.update(flag);
+	P.Analyzer.update("reset");
 }
