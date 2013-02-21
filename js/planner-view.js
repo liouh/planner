@@ -2,10 +2,8 @@ P('main');
 P.main.view = function() {
 	return{
 		render: function() {
-			console.log(P.data);
-			
-			var data = P.data;
-			var classyear = 2013;
+			var data = P.main.planData;
+			var classyear = P.main.data.classyear.year;
 			
 //			var data = P.main.planData;
 //			var classyear = P.main.data.classyear.year;
@@ -39,15 +37,18 @@ P.main.view = function() {
 					
 						term = year.terms[term];
 						html += '<div class="term"><div class="term-label">' + term.name + '</div>';
+						html += '<ul class="course-list">';
 						
 						for(var course in term.courses) {
 						
 							course = term.courses[course];
-							html += '<div class="course">';
+							html += '<li class="course">';
 							html += course.subjectCode + ' ' + course.catalogNumber;
-							html += '</div>';
+							html += '</li>';
 						}
 						
+						html += '</ul>';
+						html += '<div class="add-course">+</div>';
 						html += '</div>';
 					}
 					
@@ -68,6 +69,15 @@ P.main.view = function() {
 				$('[data-plan]').hide();
 				$('[data-plan=' + id + ']').show();
 			});
+			
+			$('.add-course').on('click', function(e) {
+				Chegg.Widget.survey({type: 'course'}, function(data) {
+					var target = $(e.currentTarget);
+					console.log(data);
+				});
+			});
+			
+			$('.course-list').sortable({ connectWith: '.course-list' });
 		},
 		
 		load: function(){
