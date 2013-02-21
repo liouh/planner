@@ -55,7 +55,7 @@ P.main.school.callbacks = {
 		model.setData(newData);
 		
 		// INIT schoolYear widget
-		Chegg.Widget.survey({type: 'classyear'}, P.main.schoolyear.callbacks.success, P.main.schoolyear.callbacks.error);
+		Chegg.Widget.survey({type: 'classyear'}, P.main.classYear.callbacks.success, P.main.classYear.callbacks.error);
 	},
 	
 	error: function(data){
