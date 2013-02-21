@@ -45,7 +45,7 @@ P.main.model = function(){
 	}
 
 	function _bindModalEvents(){
-		$(window).on('click', '.template-link', function(e){
+		$('.template-link').click(function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			
@@ -101,7 +101,6 @@ P.main.model = function(){
 			},
 			dataType: 'jsonp',
 			success: function(data){
-				_bindModalEvents();
 				if(data.length > 0){
 					// IS user already registered his email
 					console.log('plans found for user '+ P.main.options.email);
@@ -110,6 +109,7 @@ P.main.model = function(){
 				} else {
 					// SHOW plans modal
 					$('#planModal').modal('show');
+					_bindModalEvents();
 					console.log('no plans found for user '+ P.main.options.email);
 				}
 			}
