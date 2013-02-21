@@ -11,6 +11,7 @@ P.main.view = function() {
 		$('#saving').show();
 		
 		if(!isDebug()) {
+			updateAnalyzerReset();
 			updateAnalyzer();
 		}
 		
