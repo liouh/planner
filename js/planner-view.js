@@ -2,7 +2,7 @@ P('main');
 P.main.view = function() {
 	
 	function isDebug() {
-		return true;
+		return false;
 	}
 
 	
@@ -73,11 +73,11 @@ P.main.view = function() {
             return 'c1';
         } else if (course_name.indexOf('math') != -1) {
             return 'c2';
-        } else if (course_name.indeOf('biol') != -1) {
+        } else if (course_name.indexOf('biol') != -1) {
             return 'c3';
-        } else if (course_name.indeOf('chem') != -1) {
+        } else if (course_name.indexOf('chem') != -1) {
             return 'c4';
-        } else if (course_name.indeOf('physics') != -1) {
+        } else if (course_name.indexOf('physics') != -1) {
             return 'c5';
         } else { 
             return '';
@@ -92,6 +92,7 @@ P.main.view = function() {
 			if(!isDebug()) {
 				data = P.main.planData;
 				classyear = P.main.data.classyear.year;
+				console.log(data);
 			}
 			
 			var first = true;
