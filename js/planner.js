@@ -18,11 +18,11 @@ P.main.model = function(){
 			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
 
-			checkUserPlans();
+			_checkUserPlans();
 		});
 	}
 
-	function checkUserPlans(){
+	function _checkUserPlans(){
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
@@ -34,10 +34,12 @@ P.main.model = function(){
 			success: function(data){
 				if(data.length > 0){
 					// IS user already registered his email/school
+					console.log('no plans for user'+ P.main.options.email);
 					P.main.planData = data;
-					P.mainModel.getUserData();
+					getUserCachedData();
 				} else {
 					// SHOW plans modal
+					console.log('plans found for user'+ P.main.options.email);
 					$('#planModal').modal('show');
 				}
 			}
