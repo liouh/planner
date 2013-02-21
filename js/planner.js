@@ -8,12 +8,6 @@ P.main.model = function(){
 		P('main.options');
 		// INIT SDK
 		
-		// hack
-		P.main.options.email = 'mediaforge1@chegg.com';
-		P.main.options.target = "http://liouh.com/planner/data.php";
-		checkUserPlans();
-		// hack
-		
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
 		// SET options
