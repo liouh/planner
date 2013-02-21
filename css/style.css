@@ -222,6 +222,6 @@
 	height: 155px;
 }
 
-.modal-backdrop.fade.in {
-  opacity: 0 !important;
+.modal-backdrop {
+	background-color: #FFF;
 }
