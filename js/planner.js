@@ -81,6 +81,7 @@ P.main.model = function(){
 				school: P.main.data.school.name,
 				classyear: P.main.data.classyear.year
 			},
+			dataType: 'jsonp',
 			success: function(r){
 				console.log('user created');
 			},
