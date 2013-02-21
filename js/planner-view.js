@@ -10,16 +10,29 @@ P.main.view = function() {
 //			var data = P.main.planData;
 //			var classyear = P.main.data.classyear.year;
 			
+			var first = true;
 			for(var plan in data) {
 				
 				plan = data[plan];
-				$('#tabs').append('<li>' + plan.name + '</li>');
-				
 				var planData = JSON.parse(plan.data);
+				
+				var className = '';
+				if(first) {
+					className = 'selected';
+				}
+				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + planData.name + '</li>');
+				
+				className = ' hidden';
+				if(first) {
+					first = false;
+					className = '';
+				}
+				
+				var html = '<div class="plan' + className + '" data-plan="' + planData.id + '">';
 				
 				for(var year in planData.years) {
 					
-					var html = '<div class="year"><div class="year-label">' + (classyear - (planData.years.length - 1 - year)) + "</div>";
+					html += '<div class="year"><div class="year-label">' + (classyear - (planData.years.length - 1 - year)) + "</div>";
 					year = planData.years[year];
 					
 					for(var term in year.terms) {
@@ -39,10 +52,22 @@ P.main.view = function() {
 					}
 					
 					html += '</div>';
-					
-					$('#years').append(html);
 				}
+				
+				html += '</div>';
+				
+				$('#years').append(html);
 			}
+			
+			$('#tabs li').on('click', function(e) {
+				var target = $(e.target);
+				$('#tabs li').removeClass('selected');
+				target.addClass('selected');
+				
+				var id = target.attr('data-for');
+				$('[data-plan]').hide();
+				$('[data-plan=' + id + ']').show();
+			});
 		},
 		
 		load: function(){

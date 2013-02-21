@@ -6,14 +6,23 @@
 #tabs {
 	float: left;
 	width: 10%;
-	margin: 10px 0 0;
+	margin: 20px 0 0;
 	padding: 0;
 }
 
 #tabs li {
 	list-style: none;
-	background-color: #efefef;
 	padding: 10px;
+}
+
+#tabs li:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#tabs li.selected {
+	font-weight: bold;
+	background-color: #efefef;
 }
 
 #years {
@@ -21,6 +30,11 @@
 	width: 85%;
 	border: 1px solid #999;
 	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.plan.hidden {
+	display: none;
 }
 
 .year {
