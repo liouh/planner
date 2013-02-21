@@ -75,7 +75,7 @@ P.main.view = function() {
 				$('[data-plan=' + id + ']').show();
 			});
 			
-			$('.course .delete').on('click', function(e) {
+			$('#planner').on('click', '.course .delete', function(e) {
 				var target = $(e.target);
 				target.parent().remove();
 			});
