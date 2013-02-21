@@ -2,6 +2,8 @@ P('main');
 
 P.main.model = function(){
 	
+	var data = {};
+	
 	// PRIVATE
 	function _init(){
 		P('main.options');
@@ -69,7 +71,7 @@ P.main.model = function(){
 	
 	function createUser(){
 		var modelData = getModelData();
-		
+
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
