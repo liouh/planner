@@ -1,125 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Planner</title>
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/jgauge.css" />
-		
-		<style>
-			DIV.jgauge {float:none;zoom:0.6;margin:0 60px 60px}
-			.career-analysis{float:left;margin:10px;background-color:#d5d5d5;border-radius:0 5px 5px 0;text-align:center}
-			.career-analysis H2{color:#878787;font:bold "MuseoSlab-700",Sans-serif}
-			.career-analysis H3{text-align:center;font:bold 14px "MuseoSlab-700",Sans-serif;text-shadow: 0 1px #FFFFFF}
-			
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<h1>Planning Board</h1>
-			
-			<div class="career-analysis">
-				<h2>ANALYSIS</h2>
-				<h3>Money (Moolah)</h3>
-				<div id="jGaugeMoney" class="jgauge"></div>
-				<h3>Time (Duration)</h3>
-				<div id="jGaugeTime" class="jgauge"></div>
-				<h3>Joy (Happiness)</h3>
-				<div id="jGaugeJoy" class="jgauge"></div>
-			</div>
-
-		</div>
-		<script src="js/init.js"></script>
-		<script src="js/jquery-1.8.3.js"></script>
-		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
-		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
-		<script src="js/jQueryRotate.min.js"></script>
-		<script src="js/jgauge-0.3.0.a3.min.js"></script>
-
-		<script type="text/javascript">
-		   var myMoneyGauge = new jGauge(); // Create a new jGauge.
-		   var myTimeGauge = new jGauge(); // Create a new jGauge.
-		   var myJoyGauge = new jGauge(); // Create a new jGauge.
-		   myMoneyGauge.id = 'jGaugeMoney'; // Link the new jGauge to the placeholder DIV.
-		   myTimeGauge.id = 'jGaugeTime'; // Link the new jGauge to the placeholder DIV.
-		   myJoyGauge.id = 'jGaugeJoy'; // Link the new jGauge to the placeholder DIV.
-		   
-		   myMoneyGauge.ticks.count = 3;
-		   myTimeGauge.ticks.count = 3;
-		   myJoyGauge.ticks.count = 3;
-		   
-		   myMoneyGauge.label.xOffset = -2000;
-		   myTimeGauge.label.xOffset = -2000;
-		   myJoyGauge.label.xOffset = -2000;
-		   
-		   
-		   // This function is called by jQuery once the page has finished loading.
-		   $(document).ready(function(){
-		      myMoneyGauge.init(); // Put the jGauge on the page by initialising it.
-		      myTimeGauge.init(); // Put the jGauge on the page by initialising it.
-		      myJoyGauge.init(); // Put the jGauge on the page by initialising it.
-		      
-		      
-		      var ticksArr = $('.tick-label');
-		      ticksArr[0].innerText = '$';
-		      ticksArr[1].innerText = '$$';
-		      ticksArr[2].innerText = '$$$';
-		      ticksArr[3].innerText = '';
-		      ticksArr[4].innerText = '';
-		      ticksArr[5].innerText = '';
-		      ticksArr[6].innerText = '';
-		      ticksArr[7].innerText = '';
-		      ticksArr[8].innerText = '';
-		      
-		      myMoneyGauge.setValue(10);
-		      myTimeGauge.setValue(10);
-		      myJoyGauge.setValue(10);
-		      
-		      myMoneyGauge.setValue(0);
-		      myTimeGauge.setValue(0);
-		      myJoyGauge.setValue(0);
-		      
-		      myMoneyGauge.setValue(5.5);
-		      myTimeGauge.setValue(6);
-		      myJoyGauge.setValue(8);
-
-
-		   });
-		   
-			P('analyzer');
-
-			P.analyzer = function(){
-					function getModelData(){
-						return this.data;
-					}
-					
-					function setModelData(data){
-						this.data = data;
-					}
-					
-					return{
-						setData: function(data){
-							setModelData(data);
-						},
-						
-						getData: function(){
-							return getModelData();
-						}
-					}
-			}
-
-		</script>
-		<script src="js/planner-view.js"></script>
-		<script src="js/planner.js"></script>
-		<script>
-			// init page
-			P.mainView = new P.main.view();
-			P.mainView.load();
-		</script>
-	</body>
-</html>
-=======
 <!DOCTYPE html>
 <html>
 	<head>
@@ -154,11 +32,9 @@
 
 		</div>
 		<script src="js/init.js"></script>
-		<script src="js/jquery-1.8.3.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
-		<script src="js/mock-data.js"></script>
-		<script src="js/planner.js"></script>
-		<script src="js/mock-data.js"></script>
 		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
 		<script src="js/jQueryRotate.min.js"></script>
 		<script src="js/jgauge-0.3.0.a3.min.js"></script>
@@ -239,6 +115,14 @@
 			}
 
 		</script>
+		<script src="js/planner-view.js"></script>
+		<script src="js/planner.js"></script>
+		<script>
+			// init page
+			P.mainView = new P.main.view();
+			P.mainView.load();
+		</script>
+		
+		
 	</body>
 </html>
->>>>>>> new tick labels
