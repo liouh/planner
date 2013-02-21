@@ -231,9 +231,10 @@
 	display: none;
 	top: 0;
 	left: 50%;
-	margin-left: -30px;
-	width: 60px;
-	padding: 10px 20px;
+	margin-left: -80px;
+	width: 160px;
+	padding: 10px 0;
 	background-color: #ffb;
 	font-weight: bold;
+	text-align: center;
 }

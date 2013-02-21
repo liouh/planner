@@ -2,7 +2,7 @@ P('main');
 P.main.view = function() {
 	
 	function isDebug() {
-		return false;
+		return true;
 	}
 	
 	function update() {
