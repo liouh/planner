@@ -59,3 +59,12 @@
 	margin: 0 5% 6px;
 	border-radius: 5px;
 }
+
+#planModal{
+	width: 300px;
+	margin-left: -125px;
+}
+
+.modal-body{
+	height: 155px;
+}

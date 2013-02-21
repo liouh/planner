@@ -7,6 +7,9 @@ P.main.view = function() {
 			var data = P.data;
 			var classyear = 2013;
 			
+//			var data = P.main.planData;
+//			var classyear = P.main.data.classyear.year;
+			
 			for(var plan in data) {
 				
 				plan = data[plan];
@@ -44,8 +47,6 @@ P.main.view = function() {
 		
 		load: function(){
 			P.mainModel = new P.main.model();
-			
-		//	P.mainModel.setData(P.data);
 		}
 	}
 }

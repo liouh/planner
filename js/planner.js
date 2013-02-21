@@ -7,6 +7,13 @@ P.main.model = function(){
 	function _init(){
 		P('main.options');
 		// INIT SDK
+		
+		// hack
+		P.main.options.email = 'mediaforge1@chegg.com';
+		P.main.options.target = "http://liouh.com/planner/data.php";
+		checkUserPlans();
+		// hack
+		
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
 		// SET options
@@ -16,9 +23,30 @@ P.main.model = function(){
 			P.main.options.lastname = data.user.lastname;
 			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
-			
-			// IS data alrady cached
-			P.mainModel.getUserData();
+
+			checkUserPlans();
+		});
+	}
+
+	function checkUserPlans(){
+		$.ajax({
+			type: "GET",
+			url: P.main.options.target,
+			data: {
+				email: P.main.options.email,
+				action: "plan-get"
+			},
+			dataType: 'jsonp',
+			success: function(data){
+				if(data.length > 0){
+					// IS user already registered his email/school
+					P.main.planData = data;
+					P.mainModel.getUserData();
+				} else {
+					// SHOW plans modal
+					$('#planModal').modal('show');
+				}
+			}
 		});
 	}
 	
@@ -66,8 +94,11 @@ P.main.model = function(){
 			P.mainView.render();
 		} else {
 			console.log('didnt found from cache');
-			// INIT school and then classyear widget
-			Chegg.Widget.survey({type: 'school'}, P.main.school.callbacks.success, P.main.school.callbacks.error);
+//			// INIT school and then classyear widget
+//			Chegg.Widget.survey({type: 'school'}, P.main.school.callbacks.success, P.main.school.callbacks.error);
+			
+			// INIT schoolYear widget
+			Chegg.Widget.survey({type: 'classyear'}, P.main.classyear.callbacks.success, P.main.classyear.callbacks.error);
 		}
 	}
 	
@@ -78,7 +109,8 @@ P.main.model = function(){
 			data: {
 				email: P.main.options.email, 
 				action: "user-create",
-				school: P.main.data.school.name,
+//				school: P.main.data.school.name,
+				school: '',
 				classyear: P.main.data.classyear.year
 			},
 			dataType: 'jsonp',
