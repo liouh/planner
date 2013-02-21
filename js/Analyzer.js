@@ -193,8 +193,13 @@ P.Analyzer = (function(){
 	
 	
 	
-   //Update analyzer
+  //Update analyzer
 function updateAnalyzer()
+{
+	P.Analyzer.update();
+}
+
+function updateAnalyzerReset()
 {
 	P.Analyzer.update("reset");
 }
