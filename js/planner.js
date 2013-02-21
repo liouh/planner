@@ -26,8 +26,12 @@ P.main.model = function(){
 		return this.data;
 	}
 	
-	function setModelData(data){
-		this.data = data;
+	function getKeyValue(key){
+		return this.data.key ? this.data.key : null;
+	}
+	
+	function setModelData(key, value){
+		this.data.key = value;
 	}
 	
 	function getUserCachedData(){
@@ -54,10 +58,9 @@ P.main.model = function(){
 		// IF found from cache
 		if(data.school && data.classyear){
 			console.log('found from cache');
-			var newData = P.mainModel.getData();
-			newData.school = data.school;
-			newData.classyear = data.classyear;
-			P.mainModel.setData(newData);
+			
+			P.mainModel.setData('school', data.school);
+			P.mainModel.setData('classyear', data.classyear);
 
 			// RENDER
 			P.mainView.render();
@@ -77,8 +80,8 @@ P.main.model = function(){
 			data: {
 				email: P.main.options.email, 
 				action: "user-create",
-				school: modelData.school.school.name,
-				classyear: modelData.classyear.classyear.year
+				school: modelData.school.name,
+				classyear: modelData.classyear.year
 			},
 			success: function(r){
 				console.log('user created');
@@ -93,12 +96,16 @@ P.main.model = function(){
 
 	// PUPLIC
 	return{
-		setData: function(data){
-			setModelData(data);
+		setData: function(key, value){
+			setModelData(key, value);
 		},
 		
 		getData: function(){
 			return getModelData();
+		},
+		
+		get: function(key){
+			return getKeyValue(key);
 		},
 		
 		getUserData: function(){
@@ -117,9 +124,7 @@ P.main.school.callbacks = {
 	success: function(data){
 		console.log('school widget success: '+ JSON.stringify(data));
 		
-		var newData = P.mainModel.getData();
-		newData.school = data;
-		P.mainModel.setData(newData);
+		P.mainModel.setData('school', data.school);
 		
 		// INIT schoolYear widget
 		Chegg.Widget.survey({type: 'classyear'}, P.main.classyear.callbacks.success, P.main.classyear.callbacks.error);
@@ -135,13 +140,12 @@ P('main.classyear');
 P.main.classyear.callbacks = {
 	success: function(data){
 		console.log('schoolyear widget success: '+ JSON.stringify(data));
-		var model = P.mainModel, view = P.mainView, newData = model.getData();
-		newData.classyear = data;
-		model.setData(newData);
-		
-		model.saveUser();
+
+		P.mainModel.setData('classyear', data.classyear);
+		P.mainModel.saveUser();
+
 		// RENDER
-		view.render();
+		P.mainView.render();
 	},
 	
 	error: function(data){
