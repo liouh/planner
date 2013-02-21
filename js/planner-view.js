@@ -60,6 +60,11 @@ P.main.view = function() {
 				$('#years').append(html);
 			}
 			
+			$('#share').on('click', function(e) {
+				var id = $('.selected[data-for]').attr('data-for');
+				window.open('share.html?id=' + id + '&classyear=' + classyear);
+			});
+			
 			$('#tabs li').on('click', function(e) {
 				var target = $(e.target);
 				$('#tabs li').removeClass('selected');
