@@ -18,7 +18,7 @@ P.main.view = function() {
 				if(first) {
 					className = 'selected';
 				}
-				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + planData.name + '</li>');
+				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + plan.name + '</li>');
 				
 				className = ' hidden';
 				if(first) {
