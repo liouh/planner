@@ -6,7 +6,7 @@ P.main.model = function(){
 	// PRIVATE
 	function _init(){
 		P('main.options');
-
+		
 		// INIT SDK
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
@@ -39,8 +39,8 @@ P.main.model = function(){
 					getUserCachedData();
 				} else {
 					// SHOW plans modal
-					console.log('no plans found for user '+ P.main.options.email, $('#planModal'));
 					$('#planModal').modal('show');
+					console.log('no plans found for user '+ P.main.options.email);
 				}
 			}
 		});
