@@ -191,6 +191,10 @@ P.main.view = function() {
 				});
 			});
 			
+			$('span.add-major').click(function(){
+				$('#planModal').modal('show');
+			});
+			
 			$('.course-list').sortable({
 				connectWith: '.course-list',
 				stop: function(e) {

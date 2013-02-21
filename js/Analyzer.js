@@ -40,7 +40,7 @@ P.Analyzer = (function(){
 	      ticksArr[5].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
 	      ticksArr[5].style.left = "110px";
 	      ticksArr[5].style.top = "94px";
-	      ticksArr[6].innerHTML = "&#9786;";
+	      ticksArr[6].innerHTML = "&#9785;";
 	      ticksArr[7].innerHTML = '&#9786;&#9786;';
 	      ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
 	      ticksArr[8].style.left = "98px";
@@ -67,10 +67,12 @@ P.Analyzer = (function(){
 		P.main.Analyzer.data[k].setValue(v);
 	}
 	function updateModelData(flag) {
-		resetGauges();
-		if(!flag) {
+		
+		if(flag == "reset" ) {
+			resetGauges();
+		} else {
+		
 					
-	      
 	      var data = P.main.planData;
 	      data = [{"id":"2","name":"Computer Science","email":"henry@chegg.com","data":"{\"id\":\"2\",\"email\":\"henry@chegg.com\",\"name\":\"Computer Science\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 22:39:06"},{"id":"1","name":"Economics","email":"henry@chegg.com","data":"{\"id\":\"1\",\"email\":\"henry@chegg.com\",\"name\":\"Economics\",\"years\":[{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106B\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"106A\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"51\"}]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"52\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]},{\"terms\":[{\"name\":\"Fall\",\"courses\":[]},{\"name\":\"Spring\",\"courses\":[{\"subjectCode\":\"CS\",\"catalogNumber\":\"108\"},{\"subjectCode\":\"MATH\",\"catalogNumber\":\"53\"}]}]}]}","created":"2013-02-20 19:51:42"}]
 	      P.main.planData = data;
@@ -84,7 +86,7 @@ P.Analyzer = (function(){
 			var sid = $('.selected[data-for]').attr('data-for');
 			sid=2;
 			var msg="";//"selected tab:" + id +'\n';
-			var courseCount=0;
+			var courseCount=0, majorCount=0;
 				// var first = true;
 				for(var plan in data) {
 					
@@ -128,6 +130,8 @@ P.Analyzer = (function(){
 									
 								}										
 								msg+=',courses:' + courseCount+'\n';
+								majorCount += courseCount;
+								
 								if(courseCount>4) {
 									extremeFactor = 3;
 								}
@@ -143,17 +147,22 @@ P.Analyzer = (function(){
 					
 					// $('#years').append(html);
 				}
+				
+				if(majorCount > 32) {
+					extremeFactor = 3
+				}
+				msg+='\nmajorCount = ' + majorCount;
 	      		console.log(msg);
 	      	
 	      }
 	    	      
 	      P.main.Analyzer.data.gauges[0].setValue(2*extremeFactor);
-	      P.main.Analyzer.data.gauges[1].setValue(1*extremeFactor);
+	      P.main.Analyzer.data.gauges[1].setValue(.5*extremeFactor);
 	      P.main.Analyzer.data.gauges[2].setValue(.5*extremeFactor);	
 	      
 	      					
-		}
 		
+		}	
 	}
 	
 	function checkRules() {
