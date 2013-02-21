@@ -11,10 +11,10 @@ P.main.model = function(){
 		
 		// SET options
 		Chegg.Widget.survey({ type: 'user' }, function(data){
-			console.log('userData: '+ data);
-			P.main.options.firstname = data.firstname;
-			P.main.options.lastname = data.lastname;
-			P.main.options.email = data.email;
+			console.log('userData: '+ JSON.stringify(data));
+			P.main.options.firstname = data.user.firstname;
+			P.main.options.lastname = data.user.lastname;
+			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
 		});
 	}
