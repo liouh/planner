@@ -80,7 +80,7 @@ P.main.view = function() {
 					var target = $(e.currentTarget);
 					if(data && data.course) {
 						for(var course in data.course) {
-							course = data.course;
+							course = data.course[course];
 							
 							var html = '<li class="course"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
