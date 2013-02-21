@@ -168,7 +168,7 @@ P.main.view = function() {
 				$('[data-plan=' + id + ']').show();
 			});
 			
-			$('.year').on('click', '.course .delete', function(e) {
+			$('#planner').off('click').on('click', '.course .delete', function(e) {
 				var target = $(e.target);
 				target.parent().remove();
 				
