@@ -11,17 +11,20 @@
 }
 
 #tabs li {
-	padding: 10px;
+	padding: 10px 15px 10px 0;
 	position: relative;
+	color: #999;
+	font-size: 15px;
 }
 
 #tabs li:hover {
-	text-decoration: underline;
+	color: black;
 	cursor: pointer;
 }
 
 #tabs li.selected {
 	font-weight: bold;
+	color: black;
 }
 
 #tabs li.selected:before {
