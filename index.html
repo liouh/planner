@@ -12,8 +12,8 @@
 			.career-analysis H2{color:#878787;font:bold 15px "MuseoSlab-700",Sans-serif}
 			.career-analysis H3{text-align:center;font:bold 12px "MuseoSlab-700",Sans-serif}
 			DIV#jGaugeMoney p.tick-label {font-size:22px}
-			DIV#jGaugeJoy p.tick-label {font-size:25px}
-			.timer-clock{width:50px}
+			DIV#jGaugeJoy p.tick-label {font-size:25px;letter-spacing:-7px}
+			/*DIV#jGaugeTime p.tick-label IMG{width:16px}*/
 		</style>
 	</head>
 	<body>
@@ -32,8 +32,8 @@
 
 		</div>
 		<script src="js/init.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+		<script src="js/jquery-1.8.3.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 		<script src="https://d2dswzpx2y1fhq.cloudfront.net/_sdk/chegg.js"></script>
 		<!--[if IE]><script src="js/excanvas.min.js"></script><![endif]-->
 		<script src="js/jQueryRotate.min.js"></script>
@@ -65,16 +65,16 @@
 		      ticksArr[0].innerText = '$';
 		      ticksArr[1].innerText = '$$';
 		      ticksArr[2].innerText = '$$$';
-		      ticksArr[3].innerHTML = "<img src='img/timer_clock.png' class='timer-clock'/>";
+		      ticksArr[3].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/>";
 		      ticksArr[3].style.top = "94px";
-		      ticksArr[4].innerHTML = "<img src='img/timer_clock.png' class='timer-clock'/><img src='img/timer_clock.png' class='timer-clock'/>";
-		      ticksArr[5].innerHTML = "<img src='img/timer_clock.png' class='timer-clock'/><img src='img/timer_clock.png' class='timer-clock'/><img src='img/timer_clock.png' class='timer-clock'/>";
-		      ticksArr[5].style.left = "98px";
+		      ticksArr[4].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+		      ticksArr[5].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+		      ticksArr[5].style.left = "110px";
 		      ticksArr[5].style.top = "94px";
 		      ticksArr[6].innerHTML = "&#9786;";
 		      ticksArr[7].innerHTML = '&#9786;&#9786;';
 		      ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
-		      ticksArr[8].style.left = "88px";
+		      ticksArr[8].style.left = "98px";
 		      
 		      
 		      myMoneyGauge.setValue(10);
