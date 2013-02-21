@@ -47,16 +47,16 @@
 				<div class="btn-group">
 					<button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Select Plan <span class="caret"></span></button>
 					<ul class="dropdown-menu">
-						<li><a class="cs" href="#">CS</a></li>
-						<li><a class="ee" href="#">EE</a></li>
-						<li><a class="econ" href="#">ECON</a></li>
-						<li><a class="bme" href="#">BME</a></li>
+						<li><a class="template-link cs" data-major="Computer Science" href="#">CS</a></li>
+						<li><a class="template-link ee" data-major="Electrical Engineering" href="#">EE</a></li>
+						<li><a class="template-link econ" data-major="Economics" href="#">ECON</a></li>
+						<li><a class="template-link bme" data-major="Biomedical Engineering" href="#">BME</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="modal-footer">
+<!--			<div class="modal-footer">
 				<button class="btn btn-primary">Save</button>
-			</div>
+			</div>-->
 		</div>
 		<!-- Plan Modal End -->
 
@@ -69,18 +69,147 @@
 		<script src="js/jQueryRotate.min.js"></script>
 		<script src="js/jgauge-0.3.0.a3.min.js"></script>
 
+		<script type="text/javascript">
+		
+			P('main.Analyzer');
+			P.main.Analyzer.data = {};
+
+			P.Analyzer = (function(){
+				//P('Analyzer.data');
+	
+				// PRIVATE
+				function _initAnalyzer(){
+										
+					//P('Analyzer.data.gauges');
+					P.main.Analyzer.data.gauges= [];
+					
+					P.main.Analyzer.data.gauges[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
+					P.main.Analyzer.data.gauges[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
+		   			P.main.Analyzer.data.gauges[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
+		   			
+		   			P.main.Analyzer.data.gauges[0].init(); // Put the jGauge on the page by initialising it.
+				      P.main.Analyzer.data.gauges[1].init(); // Put the jGauge on the page by initialising it.
+				      P.main.Analyzer.data.gauges[2].init(); // Put the jGauge on the page by initialising it.
+				      
+				      P.main.Analyzer.data.gauges[0].setValue(10);
+				      P.main.Analyzer.data.gauges[1].setValue(10);
+				      P.main.Analyzer.data.gauges[2].setValue(10);
+				      
+				      P.main.Analyzer.data.gauges[0].setValue(0);
+				      P.main.Analyzer.data.gauges[1].setValue(0);
+				      P.main.Analyzer.data.gauges[2].setValue(0);
+				      
+				      P.main.Analyzer.data.gauges[0].setValue(5.5);
+				      P.main.Analyzer.data.gauges[1].setValue(6);
+				      P.main.Analyzer.data.gauges[2].setValue(8);
+				      		      
+				      var ticksArr = $('.tick-label');
+				      ticksArr[0].innerText = '$';
+				      ticksArr[1].innerText = '$$';
+				      ticksArr[2].innerText = '$$$';
+				      ticksArr[3].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[3].style.top = "94px";
+				      ticksArr[4].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[5].innerHTML = "<img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/><img src='img/timer_clock_15w.png' class='timer-clock'/>";
+				      ticksArr[5].style.left = "110px";
+				      ticksArr[5].style.top = "94px";
+				      ticksArr[6].innerHTML = "&#9786;";
+				      ticksArr[7].innerHTML = '&#9786;&#9786;';
+				      ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
+				      ticksArr[8].style.left = "98px";
+				      
+				      
+				}
+				
+				//PUBLIC
+				function createNewGauge (id){					
+					var myGauge = new jGauge();
+					myGauge.id = id;
+					myGauge.ticks.count = 3;
+					myGauge.label.xOffset = -2000;
+					return myGauge;					
+				}
+			
+				function getModelData(){
+					return P.main.Analyzer.data;
+				}
+				function getSettings(){
+					return P.main.Analyzer.options;
+				}
+				function setModelData(k,v){
+					P.main.Analyzer.data[k].setValue(v);
+				}
+				function updateModelData(flag) {
+					if(flag=="reset") {
+						for(var i=0;i<P.main.Analyzer.data.gauges.length;i++) 
+							P.main.Analyzer.data.gauges[i].setValue(0);	
+					} else {
+				      P.main.Analyzer.data.gauges[0].setValue(5.5);
+				      P.main.Analyzer.data.gauges[1].setValue(6);
+				      P.main.Analyzer.data.gauges[2].setValue(8);						
+					}
+				}
+				function checkRules() {
+					var count = 0,
+						tooMuch = 4,
+						flag = false;
+					
+					//iterate through data and determine true or flase
+					if(flag) {
+						
+					} else {
+						
+					}
+					
+				}
+				
+				_initAnalyzer();
+				
+				return {
+			       init: function (options) {
+			            $.extend(options);
+			        },
+			        debug: function () {
+			            return {
+			                settings: getSettings(),
+			                data: getModelData()
+			            };
+			        },
+			        setData: function (k, v) {
+			            setModelData(k,v);
+			        },
+			        getData: function (){
+			        	getModelData();
+			        },
+			        update: function (flag){
+			        	updateModelData(flag);
+			        }
+				}
+				
+			})();
+			
+			
+			
+		   //Update analyzer
+			function updateAnalyzer(flag)
+			{
+				P.Analyzer.update(flag);
+			}
+		   
+		   
+		   
+		   $(document).ready(function(){
+				P.Analyzer.init({});			   			   	
+		   			   	
+		   });
+		   
+		</script>
 		<script src="js/planner-view.js"></script>
 		<script src="js/planner.js"></script>
-		<script src="js/Analyzer.js"></script>
 		<script>
 			// init page
 			P.mainView = new P.main.view();
 			P.mainView.load();
-			
-		   $(document).ready(function(){
-				P.Analyzer.init();			   			   			   			   	
-		   });
-
 		</script>
 	</body>
 </html>

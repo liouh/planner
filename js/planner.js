@@ -6,19 +6,91 @@ P.main.model = function(){
 	// PRIVATE
 	function _init(){
 		P('main.options');
-		
 		// INIT SDK
-		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
-		// SET options
-		Chegg.Widget.survey({ type: 'user' }, function(data){
-			console.log('userData: ', data);
-			P.main.options.firstname = data.user.firstname;
-			P.main.options.lastname = data.user.lastname;
-			P.main.options.email = data.user.email;
-			P.main.options.target = "http://liouh.com/planner/data.php";
+		//hack
+		P.main.options.email = 'toutest1@chegg.com';
+		P.main.options.target = "http://liouh.com/planner/data.php";
+		_loadPreDefinedTemplates();
+		_checkUserPlans();
+//		$('#planModal').modal('show');
+		//hack
+		
+		
+//		_loadPreDefinedTemplates();
 
-			_checkUserPlans();
+//		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
+//		
+//		// SET options
+//		Chegg.Widget.survey({ type: 'user' }, function(data){
+//			console.log('userData: ', data);
+//			P.main.options.firstname = data.user.firstname;
+//			P.main.options.lastname = data.user.lastname;
+//			P.main.options.email = data.user.email;
+//			P.main.options.target = "http://liouh.com/planner/data.php";
+//
+//			_checkUserPlans();
+//		});
+	}
+	
+	function _loadPreDefinedTemplates(){
+		$.ajax({
+			type: "GET",
+			url: P.main.options.target,
+			data: {
+				action: "template-get"
+			},
+			dataType: 'jsonp',
+			success: function(data){
+				setModelData('templates', data);
+			}
+		});
+	}
+
+	function _bindModalEvents(){
+		$('.template-link').click(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			
+			var el = $(e.target), selectedMajor = el.data('major');
+			
+			for(var i in P.main.data.templates){
+				var template = P.main.data.templates[i];
+				if(template.name == selectedMajor){
+					var templateNew = template,
+						newTemplateData = JSON.parse(templateNew.data);
+						
+					newTemplateData.email = P.main.options.email;
+					
+					var params = {
+						email: P.main.options.email,
+						name: template.name,
+						data: JSON.stringify(newTemplateData)
+					}
+					
+					_saveUserMajorTemplate(params);
+					break;
+				}
+			}
+		});
+	}
+
+	function _saveUserMajorTemplate(params){
+		$.ajax({
+			type: "GET",
+			url: P.main.options.target,
+			data: {
+				action: "plan-create",
+				email: params.email,
+				name: params.name,
+				data: params.data
+			},
+			dataType: 'jsonp',
+			complete: function(data){
+				$('#planModal').modal('hide');
+				console.log('template created ...');
+				_checkUserPlans();
+			}
 		});
 	}
 
@@ -40,6 +112,7 @@ P.main.model = function(){
 				} else {
 					// SHOW plans modal
 					$('#planModal').modal('show');
+					_bindModalEvents();
 					console.log('no plans found for user '+ P.main.options.email);
 				}
 			}
@@ -47,7 +120,7 @@ P.main.model = function(){
 	}
 
 	function getModelData(){
-		return this.data;
+		return P.main.data;
 	}
 	
 	function getKeyValue(key){
@@ -80,10 +153,10 @@ P.main.model = function(){
 	// CALLBACK for getUser
 	function userHandler(data){
 		// IF found from cache
-		if(data.school && data.classyear){
+		if(data.classyear){
 			console.log('found from cache');
 			
-			setModelData('school', data.school);
+//			setModelData('school', data.school);
 			setModelData('classyear', data.classyear);
 
 			// RENDER
