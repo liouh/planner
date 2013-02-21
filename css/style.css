@@ -132,6 +132,82 @@
 	position: relative;
 }
 
+.course.c1 {
+	background: #5a97e0; 
+	background: -moz-linear-gradient(top, #5a97e0 0%, #2e6bb0 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a97e0), color-stop(100%,#2e6bb0));
+	background: -webkit-linear-gradient(top, #5a97e0 0%,#2e6bb0 100%);
+	background: -o-linear-gradient(top, #5a97e0 0%,#2e6bb0 100%);
+	background: -ms-linear-gradient(top, #5a97e0 0%,#2e6bb0 100%);
+	background: linear-gradient(top, #5a97e0 0%,#2e6bb0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a97e0', endColorstr='#2e6bb0',GradientType=0 );
+	-moz-box-shadow: inset 0px 1px 0px #5ac, 0px 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0px 1px 0px #5ac, 0px 1px 2px rgba(0,0,0,0.25);
+	box-shadow: inset 0px 1px 0px #5ac, 0px 1px 2px rgba(0,0,0,0.25);
+	text-shadow: 0 -1px #2e6bb0;
+	border: 1px solid #205ea1;
+}
+.course.c2 {
+	background: #84d14d;  
+	background: -moz-linear-gradient(top, #84d14d 0%, #5caf21 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#84d14d), color-stop(100%,#5caf21));
+	background: -webkit-linear-gradient(top, #84d14d 0%,#5caf21 100%);
+	background: -o-linear-gradient(top, #84d14d 0%,#5caf21 100%);
+	background: -ms-linear-gradient(top, #84d14d 0%,#5caf21 100%);
+	background: linear-gradient(top, #84d14d 0%,#5caf21 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84d14d', endColorstr='#5caf21',GradientType=0 );
+	-moz-box-shadow: inset 0px 1px 0px #a6eb6a, 0px 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0px 1px 0px #a6eb6a, 0px 1px 2px rgba(0,0,0,0.25);
+	box-shadow: inset 0px 1px 0px #a6eb6a, 0px 1px 2px rgba(0,0,0,0.25);
+	text-shadow: 0 -1px #5caf21;
+	border: 1px solid #58a120;
+}
+.course.c3 {
+	background: #c63ac4; 
+	background: -moz-linear-gradient(top, #c63ac4 0%, #850082 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c63ac4), color-stop(100%,#850082));
+	background: -webkit-linear-gradient(top, #c63ac4 0%,#850082 100%);
+	background: -o-linear-gradient(top, #c63ac4 0%,#850082 100%);
+	background: -ms-linear-gradient(top, #c63ac4 0%,#850082 100%);
+	background: linear-gradient(top, #c63ac4 0%,#850082 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c63ac4', endColorstr='#850082',GradientType=0 );
+	-moz-box-shadow: inset 0px 1px 0px #ff7af8, 0px 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0px 1px 0px #ff7af8, 0px 1px 2px rgba(0,0,0,0.25);
+	box-shadow: inset 0px 1px 0px #ff7af8, 0px 1px 2px rgba(0,0,0,0.25);
+	text-shadow: 0 -1px #850082;
+	border: 1px solid #66005f;
+}
+.course.c4 {
+	background: #e34927; 
+	background: -moz-linear-gradient(top, #e34927 0%, #b51800 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e34927), color-stop(100%,#b51800));
+	background: -webkit-linear-gradient(top, #e34927 0%,#b51800 100%);
+	background: -o-linear-gradient(top, #e34927 0%,#b51800 100%);
+	background: -ms-linear-gradient(top, #e34927 0%,#b51800 100%);
+	background: linear-gradient(top, #e34927 0%,#b51800 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e34927', endColorstr='#b51800',GradientType=0 );
+	-moz-box-shadow: inset 0px 1px 0px #ff8769, 0px 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0px 1px 0px #ff8769, 0px 1px 2px rgba(0,0,0,0.25);
+	box-shadow: inset 0px 1px 0px #ff8769, 0px 1px 2px rgba(0,0,0,0.25);
+	text-shadow: 0 -1px #b51800;
+	border: 1px solid #850000;
+}
+.course.c5 {
+	background: #71c4c7;
+	background: -moz-linear-gradient(top, #71c4c7 0%, #459699 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#71c4c7), color-stop(100%,#459699));
+	background: -webkit-linear-gradient(top, #71c4c7 0%,#459699 100%);
+	background: -o-linear-gradient(top, #71c4c7 0%,#459699 100%);
+	background: -ms-linear-gradient(top, #71c4c7 0%,#459699 100%);
+	background: linear-gradient(top, #71c4c7 0%,#459699 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#71c4c7', endColorstr='#459699',GradientType=0 );
+	-moz-box-shadow: inset 0px 1px 0px #8fe0e3, 0px 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0px 1px 0px #8fe0e3, 0px 1px 2px rgba(0,0,0,0.25);
+	box-shadow: inset 0px 1px 0px #8fe0e3, 0px 1px 2px rgba(0,0,0,0.25);
+	text-shadow: 0 -1px #459699;
+	border: 1px solid #37878a;
+}
+
 .course .delete {
 	font-size: 11px;
 	font-weight: normal;
