@@ -42,9 +42,9 @@ P.main.view = function() {
 						for(var course in term.courses) {
 						
 							course = term.courses[course];
-							html += '<li class="course">';
+							html += '<li class="course"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
-							html += '</li>';
+							html += '</span></li>';
 						}
 						
 						html += '</ul>';
@@ -70,10 +70,25 @@ P.main.view = function() {
 				$('[data-plan=' + id + ']').show();
 			});
 			
+			$('.course .delete').on('click', function(e) {
+				var target = $(e.target);
+				target.parent().remove();
+			});
+			
 			$('.add-course').on('click', function(e) {
 				Chegg.Widget.survey({type: 'course'}, function(data) {
 					var target = $(e.currentTarget);
-					console.log(data);
+					if(data && data.course) {
+						for(var course in data.course) {
+							course = data.course;
+							
+							var html = '<li class="course"><div class="delete">x</div><span>';
+							html += course.subjectCode + ' ' + course.catalogNumber;
+							html += '</span></li>';
+							
+							target.parent().find('.course-list').append(html);
+						}
+					}
 				});
 			});
 			
