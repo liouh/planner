@@ -7,18 +7,17 @@
 		<link rel="stylesheet" type="text/css" href="css/jgauge.css" />
 		
 		<style>
-			DIV.jgauge {float:none;zoom:0.7;margin-bottom:50px}
-			.career-analysis{float:right;border:1px solid #d5d5d5;border-radius:0 5px 5px 0;text-align:center;padding:10px 50px 20px}
+			DIV.jgauge {float:none;zoom:0.75;margin:0 auto 50px}
+			.career-analysis{float:right;border:1px solid #d5d5d5;border-radius:0 5px 5px 0;text-align:center;padding:10px 10px 20px}
 			.career-analysis H2{color:#878787;font:bold 15px "MuseoSlab-700",Sans-serif}
 			.career-analysis H3{text-align:center;font:bold 12px "MuseoSlab-700",Sans-serif}
-			DIV#jGaugeMoney p.tick-label {font-size:22px}
+			DIV#jGaugeMoney p.tick-label {font-size:20px}
 			DIV#jGaugeJoy p.tick-label {font-size:25px;letter-spacing:-7px}
 			
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<h1>Planning Board</h1>
 			
 			<div class="career-analysis">
 				<h2>ANALYZER</h2>
@@ -80,34 +79,35 @@
 		<script type="text/javascript">
 		
 			P('Analyzer');
-			P.Analyzer = (function(){
-				P.Analyzer.data = [];
+			P.Analyzer = function(){
+				//P('Analyzer.data');
+				P.Analyzer.data = {};
 	
 				// PRIVATE
 				function _init(){
 										
-					P('Analyzer.options');
-					P.Analyzer.options = {};
+					//P('Analyzer.data.gauges');
+					P.Analyzer.data.gauges= [];
 					
-					P.Analyzer.data[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
-					P.Analyzer.data[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
-		   			P.Analyzer.data[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
+					P.Analyzer.data.gauges[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
+					P.Analyzer.data.gauges[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
+		   			P.Analyzer.data.gauges[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
 		   			
-		   			P.Analyzer.data[0].init(); // Put the jGauge on the page by initialising it.
-				      P.Analyzer.data[1].init(); // Put the jGauge on the page by initialising it.
-				      P.Analyzer.data[2].init(); // Put the jGauge on the page by initialising it.
+		   			P.Analyzer.data.gauges[0].init(); // Put the jGauge on the page by initialising it.
+				      P.Analyzer.data.gauges[1].init(); // Put the jGauge on the page by initialising it.
+				      P.Analyzer.data.gauges[2].init(); // Put the jGauge on the page by initialising it.
 				      
-				      P.Analyzer.data[0].setValue(10);
-				      P.Analyzer.data[1].setValue(10);
-				      P.Analyzer.data[2].setValue(10);
+				      P.Analyzer.data.gauges[0].setValue(10);
+				      P.Analyzer.data.gauges[1].setValue(10);
+				      P.Analyzer.data.gauges[2].setValue(10);
 				      
-				      P.Analyzer.data[0].setValue(0);
-				      P.Analyzer.data[1].setValue(0);
-				      P.Analyzer.data[2].setValue(0);
+				      P.Analyzer.data.gauges[0].setValue(0);
+				      P.Analyzer.data.gauges[1].setValue(0);
+				      P.Analyzer.data.gauges[2].setValue(0);
 				      
-				      P.Analyzer.data[0].setValue(5.5);
-				      P.Analyzer.data[1].setValue(6);
-				      P.Analyzer.data[2].setValue(8);
+				      P.Analyzer.data.gauges[0].setValue(5.5);
+				      P.Analyzer.data.gauges[1].setValue(6);
+				      P.Analyzer.data.gauges[2].setValue(8);
 				      		      
 				      var ticksArr = $('.tick-label');
 				      ticksArr[0].innerText = '$';
@@ -123,6 +123,7 @@
 				      ticksArr[7].innerHTML = '&#9786;&#9786;';
 				      ticksArr[8].innerHTML = "&#9786;&#9786;&#9786;";
 				      ticksArr[8].style.left = "98px";
+				      
 				      
 				}
 				
@@ -171,7 +172,7 @@
 			        }
 				};
 				
-			}());
+			}();
 			
 			
 		   //Update analyzer
