@@ -72,16 +72,14 @@ P.main.model = function(){
 	}
 	
 	function createUser(){
-		var modelData = getModelData();
-
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
 			data: {
 				email: P.main.options.email, 
 				action: "user-create",
-				school: modelData.school.name,
-				classyear: modelData.classyear.year
+				school: P.main.data.school.name,
+				classyear: P.main.data.classyear.year
 			},
 			success: function(r){
 				console.log('user created');
