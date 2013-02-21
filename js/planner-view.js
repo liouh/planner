@@ -92,6 +92,7 @@ P.main.view = function() {
 			if(!isDebug()) {
 				data = P.main.planData;
 				classyear = P.main.data.classyear.year;
+				console.log(data);
 			}
 			
 			var first = true;
