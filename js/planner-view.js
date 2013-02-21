@@ -1,12 +1,84 @@
 P('main');
 P.main.view = function() {
-	return{
-		render: function() {
-			var data = P.main.planData;
-			var classyear = P.main.data.classyear.year;
+	
+	function isDebug() {
+		return false;
+	}
+	
+	function update() {
+	
+		$('#saving').show();
+		
+		var id = $('.selected[data-for]').attr('data-for');
+		var name = $('.selected[data-for]').text();
+		var plan = $('[data-plan=' + id + ']');
+		var data = {};
+		
+		var email = 'henry@chegg.com';
+		if(!isDebug()) {
+			email = P.main.options.email;
+		}
+		
+		data.id = id;
+		data.email = email;
+		data.name = name;
+		
+		data.years = [];
+		
+		plan.find('.year').each(function(i, el) {
 			
-//			var data = P.data;
-//			var classyear = 2013;
+			var year = {};
+			year.terms = [];
+			
+			$(el).find('.term').each(function(i, el) {
+			
+				var term = {};
+				term.name = $(el).find('.term-label').text();
+				term.courses = [];
+				
+				$(el).find('.course').each(function(i, el) {
+					
+					var courseName = $(el).find('span').text();
+					
+					var course = {};
+					course.subjectCode = courseName.split(' ')[0];
+					course.catalogNumber = courseName.split(' ')[1];
+					
+					term.courses.push(course);
+				});
+				
+				year.terms.push(term);
+			});
+			
+			data.years.push(year);
+		});
+		
+		$.ajax({
+			type: "GET",
+			url: 'http://liouh.com/planner/data.php',
+			data: {
+				id: id, 
+				name: name,
+				data: JSON.stringify(data),
+				action: "plan-update"
+			},
+			dataType: 'jsonp',
+			complete: function() {
+			//	console.log('Saved');
+				$('#saving').fadeOut();
+			}
+		});
+	}
+	
+	return {
+		render: function() {
+			
+			var data = P.data;
+			var classyear = 2015;
+			if(!isDebug()) {
+				data = P.main.planData;
+				classyear = P.main.data.classyear.year;
+			}
 			
 			var first = true;
 			for(var plan in data) {
@@ -18,7 +90,7 @@ P.main.view = function() {
 				if(first) {
 					className = 'selected';
 				}
-				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + plan.name + '</li>');
+				$('#tabs').append('<li class="' + className + '" data-for="' + plan.id + '">' + plan.name + '</li>');
 				
 				className = ' hidden';
 				if(first) {
@@ -26,7 +98,7 @@ P.main.view = function() {
 					className = '';
 				}
 				
-				var html = '<div class="plan' + className + '" data-plan="' + planData.id + '">';
+				var html = '<div class="plan' + className + '" data-plan="' + plan.id + '">';
 				
 				for(var year in planData.years) {
 					
@@ -78,6 +150,8 @@ P.main.view = function() {
 			$('#planner').on('click', '.course .delete', function(e) {
 				var target = $(e.target);
 				target.parent().remove();
+				
+				update();
 			});
 			
 			$('.add-course').on('click', function(e) {
@@ -92,12 +166,19 @@ P.main.view = function() {
 							html += '</span></li>';
 							
 							target.parent().find('.course-list').append(html);
+							
+							update();
 						}
 					}
 				});
 			});
 			
-			$('.course-list').sortable({ connectWith: '.course-list' });
+			$('.course-list').sortable({
+				connectWith: '.course-list',
+				stop: function(e) {
+					update();
+				}
+			});
 			
 			Chegg.Canvas.resize();
 		},
