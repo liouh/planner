@@ -2,7 +2,7 @@ P('main');
 P.main.view = function() {
 	
 	function isDebug() {
-		return false;
+		return true;
 	}
 
 	
@@ -66,21 +66,19 @@ P.main.view = function() {
 		});
 	}
 	
-    function lookup_course_color(course) {
-        var course_name = course.subjectCode.toLowerCase();
+    function lookup_course_color(subjectCode) {
+        var course_name = subjectCode.toLowerCase();
 
-        if (course_name.indexof('cs') != -1) {
+        if (course_name.indexOf('cs') != -1) {
             return 'c1';
-        } else if (course_name.indeof('math') != -1) {
+        } else if (course_name.indexOf('math') != -1) {
             return 'c2';
-        } else if (course_name.indeof('biol') != -1) {
+        } else if (course_name.indeOf('biol') != -1) {
             return 'c3';
-        } else if (course_name.indeof('frnch') != -1) {
+        } else if (course_name.indeOf('chem') != -1) {
             return 'c4';
-        } else if (course_name.indeof('chem') != -1) {
+        } else if (course_name.indeOf('physics') != -1) {
             return 'c5';
-        } else if (course_name.indeof('physics') != -1) {
-            return 'c6';
         } else { 
             return '';
         }
