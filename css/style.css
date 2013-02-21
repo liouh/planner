@@ -225,3 +225,15 @@
 .modal-backdrop {
 	background-color: #FFF;
 }
+
+#saving {
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 50%;
+	margin-left: -30px;
+	width: 60px;
+	padding: 10px 20px;
+	background-color: #ffb;
+	font-weight: bold;
+}
