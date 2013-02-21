@@ -34,7 +34,11 @@ P.main.view = function(){
 			P('plannerModel');
 			P.mainModel = new P.main.model();
 			P.mainModel.setData(P.data);
+
+			// INIT SDK
+			Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 			
+			// INIT school widget
 			Chegg.Widget.survey({type: 'school'}, P.main.school.callbacks.success, P.main.school.callbacks.error);
 		}
 	}
@@ -50,6 +54,7 @@ P.main.school.callbacks = {
 		newData.school = data;
 		model.setData(newData);
 		
+		// INIT schoolYear widget
 		Chegg.Widget.survey({type: 'classyear'}, P.main.schoolyear.callbacks.success, P.main.schoolyear.callbacks.error);
 	},
 	
