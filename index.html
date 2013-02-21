@@ -141,12 +141,18 @@
 				}
 				function updateModelData(flag) {
 					if(flag=="reset") {
-						for(var i=0;i<P.main.Analyzer.data.gauges.length;i++) 
-							P.main.Analyzer.data.gauges[i].setValue(0);	
+						resetGauges();
 					} else {
 				      P.main.Analyzer.data.gauges[0].setValue(5.5);
 				      P.main.Analyzer.data.gauges[1].setValue(6);
-				      P.main.Analyzer.data.gauges[2].setValue(8);						
+				      P.main.Analyzer.data.gauges[2].setValue(8);	
+				      
+				      P.main.planData = {}
+				      
+				      if(P.main.planData) {
+				      	
+				      }
+				      					
 					}
 				}
 				function checkRules() {
@@ -161,6 +167,11 @@
 						
 					}
 					
+				}
+				
+				function resetGauges(){
+					for(var i=0;i<P.main.Analyzer.data.gauges.length;i++) 
+							P.main.Analyzer.data.gauges[i].setValue(0);	
 				}
 				
 				_initAnalyzer();
