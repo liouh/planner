@@ -11,11 +11,14 @@ P.main.model = function(){
 		
 		// SET options
 		Chegg.Widget.survey({ type: 'user' }, function(data){
-			console.log('userData: '+ JSON.stringify(data));
+			console.log('userData: ', data);
 			P.main.options.firstname = data.user.firstname;
 			P.main.options.lastname = data.user.lastname;
 			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
+			
+			// IS data alrady cached
+			P.mainModel.getUserData();
 		});
 	}
 	
@@ -28,6 +31,7 @@ P.main.model = function(){
 	}
 	
 	function getUserCachedData(){
+		console.log('calling '+P.main.options.target);
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
@@ -93,9 +97,6 @@ P.main.view = function(){
 			P('plannerModel');
 			P.mainModel = new P.main.model();
 			P.mainModel.setData(P.data);
-
-			// IS data alrady cached
-			P.mainModel.getUserData();
 		}
 	}
 }
