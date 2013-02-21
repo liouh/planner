@@ -1,8 +1,7 @@
 P('main');
 
 P.main.model = function(){
-	
-	var data = {};
+	this.data = {};
 	
 	// PRIVATE
 	function _init(){
@@ -57,14 +56,14 @@ P.main.model = function(){
 			console.log('found from cache');
 			var model = P.mainModel, view = P.mainView, newData = model.getData();
 			newData.school = data.school;
-			newData.classYear = data.classyear;
+			newData.classyear = data.classyear;
 			model.setData(newData);
 
 			// RENDER
 			view.render();
 		} else {
 			console.log('didnt found from cache');
-			// INIT school and then classYear widget
+			// INIT school and then classyear widget
 			Chegg.Widget.survey({type: 'school'}, P.main.school.callbacks.success, P.main.school.callbacks.error);
 		}
 	}
@@ -123,7 +122,7 @@ P.main.school.callbacks = {
 		model.setData(newData);
 		
 		// INIT schoolYear widget
-		Chegg.Widget.survey({type: 'classyear'}, P.main.classYear.callbacks.success, P.main.classYear.callbacks.error);
+		Chegg.Widget.survey({type: 'classyear'}, P.main.classyear.callbacks.success, P.main.classyear.callbacks.error);
 	},
 	
 	error: function(data){
@@ -132,8 +131,8 @@ P.main.school.callbacks = {
 }
 
 // CLASSYEAR handler
-P('main.classYear');
-P.main.classYear.callbacks = {
+P('main.classyear');
+P.main.classyear.callbacks = {
 	success: function(data){
 		console.log('schoolyear widget success: '+ JSON.stringify(data));
 		var model = P.mainModel, view = P.mainView, newData = model.getData();
