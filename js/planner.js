@@ -54,13 +54,13 @@ P.main.model = function(){
 		// IF found from cache
 		if(data.school && data.classyear){
 			console.log('found from cache');
-			var model = P.mainModel, view = P.mainView, newData = model.getData();
+			var newData = P.mainModel.getData();
 			newData.school = data.school;
 			newData.classyear = data.classyear;
-			model.setData(newData);
+			P.mainModel.setData(newData);
 
 			// RENDER
-			view.render();
+			P.mainView.render();
 		} else {
 			console.log('didnt found from cache');
 			// INIT school and then classyear widget
@@ -117,9 +117,9 @@ P.main.school.callbacks = {
 	success: function(data){
 		console.log('school widget success: '+ JSON.stringify(data));
 		
-		var model = P.mainModel, newData = model.getData();
+		var newData = P.mainModel.getData();
 		newData.school = data;
-		model.setData(newData);
+		P.mainModel.setData(newData);
 		
 		// INIT schoolYear widget
 		Chegg.Widget.survey({type: 'classyear'}, P.main.classyear.callbacks.success, P.main.classyear.callbacks.error);
