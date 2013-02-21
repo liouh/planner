@@ -28,7 +28,7 @@
 				<h3>Joy (Happiness)</h3>
 				<div id="jGaugeJoy" class="jgauge"></div>
 				
-				<a href="javascript:updateAnalyzer()">Update Analyzer</a> | <a href="javascript:updateAnalyzer(0)">Reset</a>
+				<a href="javascript:updateAnalyzer()">Update Analyzer</a> | <a href="javascript:updateAnalyzer('reset')">Reset</a>
 
 			</div>
 			<div id="planner">
@@ -78,36 +78,37 @@
 
 		<script type="text/javascript">
 		
-			P('Analyzer');
-			P.Analyzer = function(){
+			P('main.Analyzer');
+			P.main.Analyzer.data = {};
+
+			P.Analyzer = (function(){
 				//P('Analyzer.data');
-				P.Analyzer.data = {};
 	
 				// PRIVATE
 				function _init(){
 										
 					//P('Analyzer.data.gauges');
-					P.Analyzer.data.gauges= [];
+					P.main.Analyzer.data.gauges= [];
 					
-					P.Analyzer.data.gauges[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
-					P.Analyzer.data.gauges[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
-		   			P.Analyzer.data.gauges[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
+					P.main.Analyzer.data.gauges[0] = createNewGauge('jGaugeMoney'); // Create a new jGauge.
+					P.main.Analyzer.data.gauges[1] = createNewGauge('jGaugeTime'); // Create a new jGauge.
+		   			P.main.Analyzer.data.gauges[2] = createNewGauge('jGaugeJoy'); // Create a new jGauge.
 		   			
-		   			P.Analyzer.data.gauges[0].init(); // Put the jGauge on the page by initialising it.
-				      P.Analyzer.data.gauges[1].init(); // Put the jGauge on the page by initialising it.
-				      P.Analyzer.data.gauges[2].init(); // Put the jGauge on the page by initialising it.
+		   			P.main.Analyzer.data.gauges[0].init(); // Put the jGauge on the page by initialising it.
+				      P.main.Analyzer.data.gauges[1].init(); // Put the jGauge on the page by initialising it.
+				      P.main.Analyzer.data.gauges[2].init(); // Put the jGauge on the page by initialising it.
 				      
-				      P.Analyzer.data.gauges[0].setValue(10);
-				      P.Analyzer.data.gauges[1].setValue(10);
-				      P.Analyzer.data.gauges[2].setValue(10);
+				      P.main.Analyzer.data.gauges[0].setValue(10);
+				      P.main.Analyzer.data.gauges[1].setValue(10);
+				      P.main.Analyzer.data.gauges[2].setValue(10);
 				      
-				      P.Analyzer.data.gauges[0].setValue(0);
-				      P.Analyzer.data.gauges[1].setValue(0);
-				      P.Analyzer.data.gauges[2].setValue(0);
+				      P.main.Analyzer.data.gauges[0].setValue(0);
+				      P.main.Analyzer.data.gauges[1].setValue(0);
+				      P.main.Analyzer.data.gauges[2].setValue(0);
 				      
-				      P.Analyzer.data.gauges[0].setValue(5.5);
-				      P.Analyzer.data.gauges[1].setValue(6);
-				      P.Analyzer.data.gauges[2].setValue(8);
+				      P.main.Analyzer.data.gauges[0].setValue(5.5);
+				      P.main.Analyzer.data.gauges[1].setValue(6);
+				      P.main.Analyzer.data.gauges[2].setValue(8);
 				      		      
 				      var ticksArr = $('.tick-label');
 				      ticksArr[0].innerText = '$';
@@ -137,16 +138,36 @@
 				}
 			
 				function getModelData(){
-					return P.Analyzer.data;
+					return P.main.Analyzer.data;
 				}
 				function getSettings(){
-					return this.options;
+					return P.main.Analyzer.options;
 				}
 				function setModelData(k,v){
-					P.Analyzer.data[k].setValue(v);
+					P.main.Analyzer.data[k].setValue(v);
 				}
-				function updateModelData() {
-					alert(P.Analyzer.data)
+				function updateModelData(flag) {
+					if(flag=="reset") {
+						for(var i=0;i<P.main.Analyzer.data.gauges.length;i++) 
+							P.main.Analyzer.data.gauges[i].setValue(0);	
+					} else {
+				      P.main.Analyzer.data.gauges[0].setValue(5.5);
+				      P.main.Analyzer.data.gauges[1].setValue(6);
+				      P.main.Analyzer.data.gauges[2].setValue(8);						
+					}
+				}
+				function checkRules() {
+					var count = 0,
+						tooMuch = 4,
+						flag = false;
+					
+					//iterate through data and determine true or flase
+					if(flag) {
+						
+					} else {
+						
+					}
+					
 				}
 				
 				_init();
@@ -167,18 +188,19 @@
 			        getData: function (){
 			        	getModelData();
 			        },
-			        update: function (){
-			        	updateModelData();
+			        update: function (flag){
+			        	updateModelData(flag);
 			        }
-				};
+				}
 				
-			}();
+			})();
+			
 			
 			
 		   //Update analyzer
-			function updateAnalyzer()
+			function updateAnalyzer(flag)
 			{
-				P.Analyzer.update();
+				P.Analyzer.update(flag);
 			}
 		   
 		   
