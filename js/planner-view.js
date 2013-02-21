@@ -10,6 +10,10 @@ P.main.view = function() {
 	
 		$('#saving').show();
 		
+		if(!isDebug()) {
+			updateAnalyzer();
+		}
+		
 		var id = $('.selected[data-for]').attr('data-for');
 		var name = $('.selected[data-for]').text();
 		var plan = $('[data-plan=' + id + ']');
@@ -196,7 +200,10 @@ P.main.view = function() {
 				}
 			});
 			
-			Chegg.Canvas.resize();
+			if(!isDebug()) {
+				updateAnalyzer();
+				Chegg.Canvas.resize();
+			}
 		},
 		
 		load: function(){

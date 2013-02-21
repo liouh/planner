@@ -17,8 +17,6 @@ P.main.model = function(){
 		//hack
 		
 		
-		_loadPreDefinedTemplates();
-
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
 //		// SET options
@@ -29,7 +27,7 @@ P.main.model = function(){
 			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
 
-			_checkUserPlans();
+			_loadPreDefinedTemplates();
 		});
 	}
 	
@@ -43,6 +41,7 @@ P.main.model = function(){
 			dataType: 'jsonp',
 			success: function(data){
 				setModelData('templates', data);
+				_checkUserPlans();
 			}
 		});
 	}
@@ -59,15 +58,15 @@ P.main.model = function(){
 				if(template.name == selectedMajor){
 					var templateNew = template,
 						newTemplateData = JSON.parse(templateNew.data);
-						
+
 					newTemplateData.email = P.main.options.email;
-					
+
 					var params = {
 						email: P.main.options.email,
 						name: template.name,
 						data: JSON.stringify(newTemplateData)
 					}
-					
+
 					_saveUserMajorTemplate(params);
 					break;
 				}
@@ -105,7 +104,7 @@ P.main.model = function(){
 			dataType: 'jsonp',
 			success: function(data){
 				if(data.length > 0){
-					// IS user already registered his email/school
+					// IS user already registered his email
 					console.log('plans found for user '+ P.main.options.email);
 					P.main.planData = data;
 					getUserCachedData();
@@ -157,7 +156,7 @@ P.main.model = function(){
 			console.log('found from cache');
 			
 //			setModelData('school', data.school);
-			setModelData('classyear', data.classyear);
+			setModelData('classyear', {year:data.classyear});
 
 			// RENDER
 			P.mainView.render();
