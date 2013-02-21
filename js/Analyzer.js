@@ -194,7 +194,7 @@ P.Analyzer = (function(){
 	
 	
    //Update analyzer
-function updateAnalyzer(flag)
+function updateAnalyzer()
 {
-	P.Analyzer.update(flag);
+	P.Analyzer.update("reset");
 }
