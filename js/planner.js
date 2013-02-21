@@ -6,8 +6,8 @@ P.main.model = function(){
 	// PRIVATE
 	function _init(){
 		P('main.options');
-		// INIT SDK
 		
+		// INIT SDK
 		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
 		
 		// SET options
@@ -18,11 +18,11 @@ P.main.model = function(){
 			P.main.options.email = data.user.email;
 			P.main.options.target = "http://liouh.com/planner/data.php";
 
-			checkUserPlans();
+			_checkUserPlans();
 		});
 	}
 
-	function checkUserPlans(){
+	function _checkUserPlans(){
 		$.ajax({
 			type: "GET",
 			url: P.main.options.target,
@@ -34,16 +34,18 @@ P.main.model = function(){
 			success: function(data){
 				if(data.length > 0){
 					// IS user already registered his email/school
+					console.log('plans found for user '+ P.main.options.email);
 					P.main.planData = data;
-					P.mainModel.getUserData();
+					getUserCachedData();
 				} else {
 					// SHOW plans modal
 					$('#planModal').modal('show');
+					console.log('no plans found for user '+ P.main.options.email);
 				}
 			}
 		});
 	}
-	
+
 	function getModelData(){
 		return this.data;
 	}
@@ -81,8 +83,8 @@ P.main.model = function(){
 		if(data.school && data.classyear){
 			console.log('found from cache');
 			
-			P.mainModel.setData('school', data.school);
-			P.mainModel.setData('classyear', data.classyear);
+			setModelData('school', data.school);
+			setModelData('classyear', data.classyear);
 
 			// RENDER
 			P.mainView.render();

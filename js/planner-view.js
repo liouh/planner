@@ -18,7 +18,7 @@ P.main.view = function() {
 				if(first) {
 					className = 'selected';
 				}
-				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + planData.name + '</li>');
+				$('#tabs').append('<li class="' + className + '" data-for="' + planData.id + '">' + plan.name + '</li>');
 				
 				className = ' hidden';
 				if(first) {
@@ -42,9 +42,9 @@ P.main.view = function() {
 						for(var course in term.courses) {
 						
 							course = term.courses[course];
-							html += '<li class="course">';
+							html += '<li class="course"><div class="delete">x</div><span>';
 							html += course.subjectCode + ' ' + course.catalogNumber;
-							html += '</li>';
+							html += '</span></li>';
 						}
 						
 						html += '</ul>';
@@ -60,6 +60,11 @@ P.main.view = function() {
 				$('#years').append(html);
 			}
 			
+			$('#share').on('click', function(e) {
+				var id = $('.selected[data-for]').attr('data-for');
+				window.open('share.html?id=' + id + '&classyear=' + classyear);
+			});
+			
 			$('#tabs li').on('click', function(e) {
 				var target = $(e.target);
 				$('#tabs li').removeClass('selected');
@@ -70,10 +75,25 @@ P.main.view = function() {
 				$('[data-plan=' + id + ']').show();
 			});
 			
+			$('#planner').on('click', '.course .delete', function(e) {
+				var target = $(e.target);
+				target.parent().remove();
+			});
+			
 			$('.add-course').on('click', function(e) {
 				Chegg.Widget.survey({type: 'course'}, function(data) {
 					var target = $(e.currentTarget);
-					console.log(data);
+					if(data && data.course) {
+						for(var course in data.course) {
+							course = data.course[course];
+							
+							var html = '<li class="course"><div class="delete">x</div><span>';
+							html += course.subjectCode + ' ' + course.catalogNumber;
+							html += '</span></li>';
+							
+							target.parent().find('.course-list').append(html);
+						}
+					}
 				});
 			});
 			

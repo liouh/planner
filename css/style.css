@@ -8,21 +8,23 @@
 	margin: 30px 0 0;
 	padding: 0;
 	list-style: none;
-	font-size: 15px;
 }
 
 #tabs li {
-	padding: 10px;
+	padding: 10px 15px 10px 0;
 	position: relative;
+	color: #999;
+	font-size: 15px;
 }
 
 #tabs li:hover {
-	text-decoration: underline;
+	color: black;
 	cursor: pointer;
 }
 
 #tabs li.selected {
 	font-weight: bold;
+	color: black;
 }
 
 #tabs li.selected:before {
@@ -60,7 +62,7 @@
 	width: 87%;
 	border: 1px solid #999;
 	border-radius: 5px 0 0 0;
-	box-shadow: 0 0 5px #999;
+	box-shadow: 0 0 5px #ccc;
 	background-color: white;
 }
 
@@ -95,7 +97,7 @@
 
 .term-label {
 	text-align: center;
-	padding: 0 0 15px;
+	padding: 0 0 20px;
 	color: #999;
 	text-transform: uppercase;
 	font-size: 13px;
@@ -105,7 +107,7 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	height: 405px;
+	height: 395px;
 	overflow: hidden;
 }
 
@@ -127,6 +129,17 @@
 	background: linear-gradient(top, #feb62c 0%,#f07d00 100%);
 	box-shadow: inset 0px 1px 0px #fc0, 0px 1px 2px rgba(0,0,0,0.25);
 	border: 1px solid #f07d00;
+	position: relative;
+}
+
+.course .delete {
+	font-size: 11px;
+	font-weight: normal;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 3px 5px;
+	cursor: pointer;
 }
 
 #sandbox {
@@ -180,6 +193,26 @@
 	font-size: 20px;
 }
 
+.add-course:hover {
+	background-color: #ddd;
+}
+
+#share {
+	width: 173px;
+	margin-left: auto;
+	margin-bottom: 10px;
+	background-color: #999;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+#share:hover {
+	cursor: pointer;
+	background-color: #ccc;
+}
+
 #planModal{
 	width: 300px;
 	margin-left: -125px;
@@ -189,6 +222,6 @@
 	height: 155px;
 }
 
-.modal-backdrop.fade.in {
-  opacity: 0 !important;
+.modal-backdrop {
+	background-color: #FFF;
 }
