@@ -5,11 +5,25 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/jgauge.css" />
+		
+		<style>
+			DIV.jgauge {float:none}
+			.career-analysis{border:solid 1px gray;float:left;margin:10px}
+			.career-analysis H2{text-align:center}
+		</style>
 	</head>
 	<body>
 		<div class="container">
-			Planner board
-			<div id="jGaugeDemo" class="jgauge"></div>
+			<h1>Planning Board</h1>
+			
+			<div class="career-analysis">
+				<h2>Moolah </h2>
+				<div id="jGaugeMoney" class="jgauge"></div>
+				<h2>Time</h2>
+				<div id="jGaugeTime" class="jgauge"></div>
+				<h2>Joy</h2>
+				<div id="jGaugeJoy" class="jgauge"></div>
+			</div>
 
 		</div>
 		<script src="js/init.js"></script>
@@ -23,6 +37,7 @@
 		<script src="js/jgauge-0.3.0.a3.min.js"></script>
 
 		<script type="text/javascript">
+<<<<<<< HEAD
 			var myGauge = new jGauge(); // Create a new jGauge.
 			myGauge.id = 'jGaugeDemo'; // Link the new jGauge to the placeholder DIV.
 		   
@@ -31,6 +46,54 @@
 				myGauge.init(); // Put the jGauge on the page by initialising it.
 			});
 			myGauge.setValue(10);
+=======
+		   var myMoneyGauge = new jGauge(); // Create a new jGauge.
+		   var myTimeGauge = new jGauge(); // Create a new jGauge.
+		   var myJoyGauge = new jGauge(); // Create a new jGauge.
+		   myMoneyGauge.id = 'jGaugeMoney'; // Link the new jGauge to the placeholder DIV.
+		   myTimeGauge.id = 'jGaugeTime'; // Link the new jGauge to the placeholder DIV.
+		   myJoyGauge.id = 'jGaugeJoy'; // Link the new jGauge to the placeholder DIV.
+		   myMoneyGauge.width, myTimeGauge.width, myJoyGauge.width = 120;
+		   
+		   // This function is called by jQuery once the page has finished loading.
+		   $(document).ready(function(){
+		      myMoneyGauge.init(); // Put the jGauge on the page by initialising it.
+		      myTimeGauge.init(); // Put the jGauge on the page by initialising it.
+		      myJoyGauge.init(); // Put the jGauge on the page by initialising it.
+		      
+		      myMoneyGauge.setValue(10);
+		      myTimeGauge.setValue(10);
+		      myJoyGauge.setValue(10);
+
+		      myMoneyGauge.setValue(0);
+		      myTimeGauge.setValue(0);
+		      myJoyGauge.setValue(0);
+
+		   });
+		   
+			P('analyzer');
+
+			P.analyzer = function(){
+					function getModelData(){
+						return this.data;
+					}
+					
+					function setModelData(data){
+						this.data = data;
+					}
+					
+					return{
+						setData: function(data){
+							setModelData(data);
+						},
+						
+						getData: function(){
+							return getModelData();
+						}
+					}
+			}
+
+>>>>>>> added 3 different gauges to index
 		</script>
 	</body>
 </html>
