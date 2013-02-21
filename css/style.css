@@ -193,6 +193,26 @@
 	font-size: 20px;
 }
 
+.add-course:hover {
+	background-color: #ddd;
+}
+
+#share {
+	width: 20%;
+	float: right;
+	margin-bottom: 10px;
+	background-color: #999;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	font-size: 14px;
+}
+
+#share:hover {
+	cursor: pointer;
+	background-color: #ccc;
+}
+
 #planModal{
 	width: 300px;
 	margin-left: -125px;
