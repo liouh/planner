@@ -78,8 +78,8 @@ P.Analyzer = (function(){
 	      // P.main.planData = data;
 	      
 	      if(data) {
-	      	//var classyear = data.classyear.year;
-	      	var classyear = 2016;
+	      	var classyear = data.classyear.year;
+	      	// var classyear = 2016;
 	      	var extremeFactor = 1.25;
 	      
 

@@ -15,7 +15,7 @@ P.main.model = function(){
 //		$('#planModal').modal('show');
 		//hack
 		
-		Chegg.init({appName: 'planner', version: 1, domain: 'https://test3.live.cheggnet.com/'});
+		Chegg.init({appName: 'planner', version: 1, domain: 'https://trunk.live.test.cheggnet.com/', redirect: '/'});
 		
 //		// SET options
 		Chegg.Widget.survey({ type: 'user' }, function(data){
